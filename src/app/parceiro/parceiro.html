@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-lg-12" style="padding-left:30px;padding-right:30px" style="background-color: rgba(246, 249, 252, 0.836)">
+        <br>
+        <div class="row wrapper border-bottom white-bg page-heading" style="background-color: rgba(246, 249, 252, 0.836)">
+            <div class="col-lg-12" style="background-color: rgba(246, 249, 252, 0.836)">
+                <div class="row">
+                    <h2 class="col-md-6">Clientes / Fornecedores</h2>
+                    <br>
+                    <div class="col-md-6 pull-right">
+                        <input type="button" value="Novo Cliente/Fonecedor" class="btn btn-success pull-right" ng-click="openModal('new')">
+                    </div>
+                    <div class="input-group col-md-6 pull-right" style="margin-top:15px">
+                        <input type="text" placeholder="Procurar Cliente/Fornecedor" ng-model="vm.searchText" ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)"
+                            class="input-sm form-control" style="background-color: rgba(246, 249, 252, 0.836)">
+                        <span class="input-group-btn">
+                            <button ng-click="vm.search(vm.searchText)" type="button" class="btn btn-sm btn-success">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <ol class="breadcrumb" style="background-color: rgba(246, 249, 252, 0.836)">
+                    <li>
+                        <a ui-sref="dashboard.home">Home</a>
+                    </li>
+                    <li class="active">
+                        <strong>Clientes / Fornecedores</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content">
+            <div class="ibox-content row animated fadeInDown" style="background-color: rgba(246, 249, 252, 0.836)">
+
+                <table class="table table-striped">
+                    <thead ng-hide="visibleTable">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>CPF/CNPJ</th>
+                            <th>Telefone</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Cliente?</th>
+                            <th>Fornecedor?</th>
+                            <th class="pull-right" style="margin-right:25px">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="identify" ng-repeat="c in partners">
+                            <td title="{{c.name}}">{{c.name.substring(0,28)}}</td>
+                            <td>{{c.type}}</td>
+                            <td>{{c.registerNumber}}</td>
+                            <td ng-if="c.telefone">{{c.telefone}}</td>
+                            <td ng-if="!c.telefone">----</td>
+                            <td ng-if="c.city">{{c.city}}</td>
+                            <td ng-if="!c.city">----</td>
+                            <td ng-if="c.state">{{c.state}}</td>
+                            <td ng-if="!c.state">----</td>
+                            <td>{{c.client?'Sim':'Não'}}</td>
+                            <td>{{c.provider?'Sim':'Não'}}</td>
+                            <td>
+                                <button title="Excluir Cliente/Fornecedor" ng-click="deletePartners(c._id)" class="pull-right btn btn-sm btn-danger" style="margin-left:5px">
+                                    <i class="fa fa-lg fa-trash"></i>
+                                </button>
+                                <button title="Editar Cliente/Fornecedor" ng-click="openModal(c._id)" class="pull-right btn btn-sm btn-warning" style="width:35px">
+                                    <i class="fa fa-lg fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-if="!partners">
+                    <spam class="col-lg-12" style="font-size:18pt; text-align:center">
+                        <strong style="color:#a927fa">{{vm.textErro}}</strong>
+                    </spam>
+                </div>
+                <div ng-if="vm.totalItems == 0">
+                    <spam class="col-lg-12" style="font-size:18pt; text-align:center">
+                        <strong style="color:#a927fa">{{vm.notifyErro}}</strong>
+                    </spam>
+                </div>
+                <div ng-hide="assyncRequest" class="spinner-example wrapper wrapper-content " id="spinner">
+                    <div class="sk-spinner sk-spinner-chasing-dots">
+                        <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
+                        <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
+                    </div>
+                </div>
+            </div>
+            <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems" max-size='3' ng-model="currentPage" ng-change="vm.nextListPartners(currentPage)"
+                class="pagination-sm" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
+                first-text="&laquo;" last-text="&raquo;" style="display: flex; align-items: center; justify-content: center">
+        </div>
+    </div>
+</div>
+<style>
+    #identify:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+</style>

@@ -1,0 +1,236 @@
+<div class="ibox-content">
+    <div class="row" style="margin-left:1%; margin-right:5%">
+        <h2 ng-if="accountLaunch._id === new">Insira um Novo Lançamento
+            <spam class="pull-right" style="cursor:pointer">
+                <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
+            </spam>
+        </h2>
+        <h2 ng-if="accountLaunch._id">Edite um Lançamento
+            <spam class="pull-right" style="cursor:pointer">
+                <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
+            </spam>
+        </h2>
+        <br>
+        <button ng-if="accountLaunch._id" class="btn btn-primary pull-right" ng-click="vm.openModal(accountLaunch._id)">Adicionar Anexo</button>
+        <br>
+        <form id="form" ng-submit="register(form)">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="btn-group">
+                        <label class="btn btn-{{accountLaunch.credit === true ? 'success':'white'}}" ng-model="accountLaunch.credit" uib-btn-radio="true"
+                            value="true">Crédito</label>
+                        <label class="btn btn-{{accountLaunch.credit === false ? 'danger':'white'}}" ng-model="accountLaunch.credit" uib-btn-radio="false"
+                            value="false">Débito </label>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>
+                        <b>Quantia*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">R$</span>
+                        <input type="text" id="value" ng-model="accountLaunch.value" class="form-control" required/>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4>
+                        <b>Descrição</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="text" placeholder="Descrição" ng-model="accountLaunch.description" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>
+                        <b>Data*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="accountLaunch.date" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4>
+                        <b>Categoria</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Categoria" autocomplete="off" uib-typeahead="p as p.name  for p in categories | filter:$viewValue | limitTo:15"
+                            ng-model="accountLaunch._category" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4>
+                        <b>Nº Documento</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="text" placeholder="Nº Documento" ng-model="accountLaunch.docNumber" class="form-control" />
+                    </div>
+                </div>
+                <div ng-if="accountLaunch.credit ===false" class="col-lg-6">
+                    <h4>
+                        <b>Fornecedor</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Fornecedor" autocomplete="off" uib-typeahead="p as p.name  for p in providerPartners | filter:$viewValue | limitTo:15"
+                            ng-model="accountLaunch._partner" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div ng-if="accountLaunch.credit ===false" class="col-lg-6">
+                    <h4>
+                        <b>Centro de Custo</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Centro de Custo" autocomplete="off" uib-typeahead="p as p.name  for p in centerCost | filter:$viewValue | limitTo:15"
+                            ng-model="accountLaunch._center" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div ng-if="accountLaunch.credit ===true" class="col-lg-6">
+                    <h4>
+                        <b>Cliente</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Cliente" autocomplete="off" uib-typeahead="p as p.name  for p in clientPartners | filter:$viewValue | limitTo:15"
+                            ng-model="accountLaunch._partner" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div ng-if="accountLaunch.credit ===true" class="col-lg-6">
+                    <h4>
+                        <b>Centro de Receita</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Centro de Receita" autocomplete="off" uib-typeahead="p as p.name  for p in centerRevenue | filter:$viewValue | limitTo:15"
+                            ng-model="accountLaunch._center" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h4>
+                        <b>Mês de Competência</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="accountLaunch.month" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-lg-12" ng-if="vm.anexos">
+                    <div>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr id="identify" style="cursor:pointer">
+                                    <td style="text-align:center">
+                                        <h3>
+                                            <a>
+                                                <b ng-click="openAnexo(accountLaunch._id)" style="cursor:pointer">Visualizar Anexo</b>
+                                            </a>
+                                        </h3>
+                                    </td>
+                                    <td>
+                                        <i class="btn btn-sm btn-danger" ng-click="vm.deleteAnexo(accountLaunch._id)" style="margin-left:60%; cursor:pointer">Excluir anexo</i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-12" ng-if="accountLaunch._conciliation">
+                    <h3>Conciliada a conta</h3>
+                    <div>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr id="identify" style="cursor:default">
+                                    <td>
+                                        <spam style="cursor:pointer; color:blue" ng-click="open(conciliation.bill._id)">Detalhes da conta</spam>
+                                    </td>
+                                    <td ng-if="conciliation.bill.description">
+                                        <strong>Descrição: </strong>{{conciliation.bill.description}}</td>
+                                    <td ng-if="!conciliation.bill.description">
+                                        <strong>Descrição: </strong>-----</td>
+                                    <td ng-if="conciliation.bill.credit">
+                                        <strong>Tipo: </strong>Crédito</td>
+                                    <td>
+                                        <td ng-if="!conciliation.bill.credit">
+                                            <strong>Tipo: </strong>Débito</td>
+                                        <td>
+                                            <strong>Valor: </strong>{{'R$' + conciliation.bill.value}}</td>
+                                        <td>
+                                            <strong>Data de Lançamento: </strong>{{conciliation.bill.payday |date:'dd/MM/yyyy'}}</td>
+                                        <td>
+                                            <strong>Conta: </strong>{{conciliation.bill._account.name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <br>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-2">
+                    <input type="submit" class="form-control btn btn-success" value="Salvar" ng-if="accountLaunch._id === new" />
+                    <input type="submit" class="form-control btn btn-success" value="Atualizar" ng-if="accountLaunch._id" />
+                </div>
+                <div class="col-lg-5"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    #value {
+        direction: rtl
+    }
+    
+</style>
+<script>
+    var mask = {
+        money: function () {
+            var el = this
+                , exec = function (v) {
+                    v = v.replace(/\D/g, "");
+                    v = new String(Number(v));
+                    var len = v.length;
+                    if (1 == len)
+                        v = v.replace(/(\d)/, "0.0$1");
+                    else if (2 == len)
+                        v = v.replace(/(\d)/, "0.$1");
+                    else if (len > 2) {
+                        v = v.replace(/(\d{2})$/, '.$1');                  
+                    }
+                    return v;
+                };
+            setTimeout(function () {
+                el.value = exec(el.value);
+            }, 1);
+        }
+    }
+
+    $(function () {
+        $('input#value').bind('keypress', mask.money)
+    });
+</script>

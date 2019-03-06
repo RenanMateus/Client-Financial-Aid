@@ -1,0 +1,72 @@
+<div class="ibox-content">
+        <div class="row" style="margin-left:1%; margin-right:1%">
+            <h2>Cadastre uma nova conta<spam class="pull-right" style="cursor:pointer"><i class="fa fa-close" ng-click="vm.close()" style="color:red"></i></spam></h2>
+            <br>
+            <form id="form" ng-submit="register(form)">
+                <div class="row">    
+                    <div class="col-lg-6">
+                            <h4><b>Tipo de Conta*</b></h4>
+                            <div class="input-group m-b">
+                                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                <select class="form-control" ng-model="account.type" required>
+                                        <option value="" selected disabled>Selecione o tipo de conta</option>
+                                        <option value="Conta Corrente">Conta Corrente</option>
+                                        <option value="Dinheiro">Dinheiro</option>
+                                        <option value="Investimento">Investimento</option>                                        
+                                </select>
+                            </div>
+                            </div>                                                                                                                
+                                <div class="col-lg-12">
+                                    <h4><b>Nome*</b></h4>
+                                    <div class="input-group m-b">
+                                            <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                        <input type="text" placeholder="Nome" ng-model="account.name" class="form-control" required>
+                                    </div>
+                                </div>    
+                                <div class="col-lg-6" ng-if="account.type==='Conta Corrente'">
+                                        <h4><b>Banco*</b></h4>
+                                        <div class="input-group m-b">
+                                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                                <select class="form-control" ng-model="account.bank" required>
+                                                        <option value="" selected disabled>Selecione o banco</option>
+                                                        <option value="Banco Bradesco S.A. - 237">Banco Bradesco S.A. - 237</option>
+                                                        <option value="Banco Citibank S.A. - 745">Banco Citibank S.A. - 745</option>
+                                                        <option value="Banco do Brasil S.A. - 001">Banco do Brasil S.A. - 001</option>                                        
+                                                        <option value="Banco Itaú - S.A. - 341">Banco Itaú - S.A. - 341</option>
+                                                        <option value="Banco Nossa Caixa S.A. - 151">Banco Nossa Caixa S.A. - 151</option>
+                                                        <option value="Banco Safra S.A - 422">Banco Safra S.A - 422</option>
+                                                        <option value="Banco Santander Banespa S.A - 033">Banco Santander Banespa S.A - 033</option>
+                                                        <option value="Banco Santander S.A. - 351">Banco Santander S.A. - 351</option>
+                                                        <option value="Caixa Econômica Federal - 104">Caixa Econômica Federal - 104</option>
+                                                        <option value="HSBC Bank Brasil S.A. - Banco Múltiplo - 399">HSBC Bank Brasil S.A. - Banco Múltiplo - 399</option>
+                                                </select>
+                                        </div>
+                                    </div> 
+                                    <div class="col-lg-3" ng-if="account.type==='Conta Corrente'">
+                                            <h4><b>Agência*</b></h4>
+                                            <div class="input-group m-b">
+                                                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                                <input type="text" placeholder="Agência" ng-model="account.agency" class="form-control" required>
+                                            </div>
+                                        </div>  
+                                        <div class="col-lg-3" ng-if="account.type==='Conta Corrente'">
+                                                <h4><b>Numero da Conta*</b></h4>
+                                                <div class="input-group m-b">
+                                                        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                                    <input type="text" placeholder="Numero da Conta" ng-model="account.accountNumber" class="form-control" required>
+                                                </div>
+                                            </div>                 
+                    </div>
+                    <div class="row">
+                        <br><br>
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-2">
+                            <input type="submit" class="form-control btn btn-success" value="Salvar"/>
+                        </div>
+                        <div class="col-lg-5"></div>
+                    </div>
+                </form>
+        </div>
+    </div>
+    
+    

@@ -1,0 +1,19 @@
+.nav > li.active > a {
+    color: #ffffff;
+    background-color:rgb(64, 127, 179);
+}
+body{
+    background-color: #113141;
+}
+.nav > li.active > a,
+.nav > li.active > a:hover,
+.nav > li.active > a:focus {
+  color: #fff;
+  background-color:rgb(64, 127, 179);
+}
+
+.nav > li > a:active{
+    background-color:rgb(64, 127, 179);
+    color: #fff;
+}
+

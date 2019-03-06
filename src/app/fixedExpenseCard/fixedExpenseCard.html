@@ -1,0 +1,74 @@
+<div class="row">
+        <div  class="col-lg-12" style="padding-left:30px;padding-right:30px">
+            <br>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h2 class="col-md-6">Despesas Fixa do Cartão</h2>
+                        <br>
+                        <div class="col-md-6 pull-right">
+                            <input type="button" ng-model="vm.searchText" value="Adicionar" class="btn btn-success pull-right" ng-click="openModalNew('new')">
+                            <select class="form-control" ng-change="vm.getCards(c)" ng-model="c" ng-options="c.name for c in vm.creditCard">
+                                <option value="">Selecione um Cartão</option>
+                            </select>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a ui-sref="dashboard.home">Home</a>
+                        </li>
+                        <li class="active">
+                            <strong>Despesas Fixa do Cartão</strong>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="wrapper wrapper-content">
+                    <div class="row animated fadeInDown">
+            
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Data de pagamento</th>
+                                        <th>Descrição</th>
+                                        <th>Categoria</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr ng-repeat="r in vm.fixedExpensesCard" style="font-size:16px" ng-click="openModal(r._id)" class="table-financial-Intelligence">
+                                        <td >
+                                            {{r.payday}}
+                                        </td>
+                                        <td>
+                                            {{r.description}}
+                                        </td>
+                                        <td>
+                                            {{r._categorie.name}}
+                                         </td>
+                                        <td>
+                                            {{vm.convertCurrency(r.value)}}
+                                        </td>
+                                       
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ul uib-pagination boundary-links="true" total-items="vm.totalItems" max-size='3' ng-model="currentPage"
+                            ng-change="vm.nextFixedExpense(currentPage)" class="pagination-sm" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;"
+                            items-per-page="vm.itemsPerPage" first-text="&laquo;" last-text="&raquo;" style="margin-left:80%">
+                        </div>
+            
+                    </div>
+                </div>
+            
+        </div>
+        <!--
+        <div class="spinner-example wrapper wrapper-content " id="spinner" style="padding-top:25%">
+            <div class="sk-spinner sk-spinner-chasing-dots">
+                <div class="sk-dot1"></div>
+                <div class="sk-dot2"></div>
+            </div>
+        </div> -->
+    </div>

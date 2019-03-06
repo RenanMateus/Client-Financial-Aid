@@ -1,0 +1,59 @@
+<div class="row" style="background:rgba(246, 249, 252, 0.836)">
+    <div class="col-lg-12" style="padding-left:30px;padding-right:30px; background:rgba(246, 249, 252, 0.836)">
+        <br>
+        <div class="row wrapper border-bottom white-bg page-heading" style="background:rgba(246, 249, 252, 0.836)">
+            <div class="col-lg-12" style="background:rgba(246, 249, 252, 0.836)">
+                <div class="row" style="background:rgba(246, 249, 252, 0.836)">
+                    <h2 class="col-md-6">Fluxo de Caixa</h2>
+                    <br>
+                </div>
+            </div>
+            <ol class="breadcrumb" style="background:rgba(246, 249, 252, 0.836)">
+                <li>
+                    <a ui-sref="dashboard.home">Home</a>
+                </li>
+                <li class="active">
+                    <strong>Fluxo de Caixa</strong>
+                </li>
+            </ol>
+        </div>
+      <span class="pull-left"><i class="fa fa-circle" style="color:#f39c12; margin-right:5px"></i>Dia Atual</span>
+      <span class="pull-right"><i class="fa fa-circle" style="color:#2ecc71; margin-right:5px"></i>Saldo Positivo</span>
+      <span class="pull-right" style="margin-left:20px; margin-right:20px"><i class="fa fa-circle" style="color:rgba(255, 0, 0, .8); margin-right:5px"></i>Saldo Negativo</span>
+      <span class="pull-right"><i class="fa fa-circle" style="color:rgba(0,0,0,0.3); margin-right:5px"></i>Saldo previsto</span>
+    </div>
+
+    <div class="wrapper wrapper-content" style="margin-left:6px">
+        <div class="ibox-content row animated fadeInDown" style="background:rgba(246, 249, 252, 0.836)">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-content ui-calendar" style="background:rgba(246, 249, 252, 0.836)">
+                    <div ui-calendar="uiConfig.calendar" calendar="myCalendar1" class="calendar" ng-model="eventSources" style="color:black; background:rgba(246, 249, 252, 0.836)"></div>
+                </div>
+            </div>
+            <div class="row col-lg-12">            
+                <canvas class="line-chart" style="width:100%; height:37ch"></canvas>
+            </div> 
+        </div>
+    </div>
+</div>
+
+</div>
+<style>
+.fc-unthemed td.fc-today {
+    background: #eeaf4a7e
+}
+.fc-state-active {
+    background-color: rebeccapurple
+}
+.fc-today-button{
+    background-color: #5cb9fb94    
+}
+.fc-next-button{
+    background-color: #5cb9fb94
+}
+.fc-prev-button{
+    background-color: #5cb9fb94
+}
+
+</style>

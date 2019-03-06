@@ -1,0 +1,117 @@
+<nav class="navbar-default navbar-static-side nav-financial-Intelligence" role="navigation" ng-controller="AuthController as vm">
+    <div class="sidebar-collapse"> 
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header-financial-Intelligence" style="background-color:#192a39"> 
+                <div class="profile-element" uib-dropdown style="background-color:#192a39">
+                    <img src="assets/file/logo.png" style="display: block;margin: -8px auto;" width="130" alt="Imagem de perfil" class=""
+                    />
+                </div> 
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.home"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.billsExpense"><i class="fa fa-money"></i> <span class="nav-label">Contas a Pagar</span></a>
+            </li> 
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.billsRecipe"><i class="fa fa-money"></i> <span class="nav-label">Contas a Receber</span></a>
+            </li>            
+            <li class="gamb" >
+                <a class="gamb">
+                    <i class="fa fa-bank"></i>
+                        <span class="nav-label">Movimento Bancário</span>
+                            <span class="fa arrow"></span>
+                </a>                                                                  
+                <ul class="nav nav-second-level" style="color: #192a39; background: #192a39; margin-left:-10%">
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.account"><i class="fa fa-usd"></i> <span class="nav-label">Todas as Contas</span></a>
+                    </li> 
+                    <li ui-sref-active="active" ng-repeat="c in account" style="margin-bottom:0%">
+                        <a ui-sref="dashboard.accountLaunch({id:c._id})"><i class="fa fa-usd"></i> <span class="nav-label">{{c.name}}</span></a>
+                    </li>                                        
+                </ul>
+            </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.conciliation"><i class="fa fa-check"></i> <span class="nav-label">Conciliação</span></a>
+            </li>           
+            <li ui-sref-active="active">
+                <a ui-sref="dashboard.flowCalendar"><i class="fa fa-bar-chart"></i> <span class="nav-label">Fluxo de Caixa</span></a>
+            </li>                                                                                           
+            <li class="gamb" ui-sref-active="active" >
+                    <a class="gamb">
+                        <i class="fa fa-user-o"></i>
+                            <span class="nav-label">Cadastros</span>
+                                <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level" style="color: #192a39; background: #192a39; margin-left:-10%">
+                        <li ui-sref-active="active">
+                                <a ui-sref="dashboard.categories"><i class="fa fa-tags"></i> <span class="nav-label">Categorias</span></a>
+                        </li>
+                        <li ui-sref-active="active">
+                                <a ui-sref="dashboard.parceiro"><i class="fa fa-users"></i> <span class="nav-label">Clientes / Fornecedores</span></a>
+                        </li>
+                        <li ui-sref-active="active" style="margin-bottom:0%">
+                                <a ui-sref="dashboard.centers"><i class="fa fa-money"></i> <span class="nav-label">Centro de Custo / Receita</span></a>
+                        </li>                        
+                    </ul>
+                </li>        
+        </ul>
+    </div>
+</nav>
+
+<style>
+    
+    .linkfinancial-Intelligence {
+        background-color:rgb(64, 127, 179);
+        color: #192a39;
+        font-size: 1em;
+    }
+
+    .linkfinancial-Intelligence:hover {
+        background-color:rgb(64, 127, 179);
+        color: #192a39;
+    }
+
+    .linkfinancial-Intelligence2 {
+        list-style: none;
+        padding: 2px;
+        padding-top: 5px;
+        margin-left: -10px;
+    }
+    .navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus{
+        background-color:rgb(64, 127, 179);
+    }
+    .nav-label {
+        color:ghostwhite;
+    }
+    .nav>li.active {
+    border-left: 0.1px solid #192a39;
+    background: #293846;
+    }
+    .gamb{
+        background-color: #192a39 !important;
+    }
+    .gamb.active{
+        background-color: #192a39 !important;
+    }
+    .gamb:hover{
+        background-color:rgb(64, 127, 179) !important;
+    }
+</style>
+
+<script>
+        $(document).ready(function () {
+            var url = window.location;
+            var element = $('ul.nav a').filter(function() {
+                return this.href === url;
+            }).addClass('active');          
+            element = element.parent().parent().parent();
+            if (element.is('li')) {
+                element.addClass('active');
+            }  
+            $(function () {
+                $('#side-menu').metisMenu();
+            });
+        });
+    </script>

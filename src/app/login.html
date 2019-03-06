@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" ng-app="finances">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Financial Intelligence</title>
+  <meta name="description" content="Descrição">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+  <link rel="shortcut icon" href="assets/favicon.png">
+
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.css">
+
+  <!-- javascript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body class="">
+ <!-- Wrapper-->
+ <div class="middle-box text-center loginscreen animated fadeInDown" ng-controller="AuthController as vm">
+        <div class="form-login-financial-Intelligence" style="background-color:#5061f5;margin-top:50%">
+            <div style="margin:auto;">
+                <img src="./assets/file/logo.png" alt="" height="100px" style="background: #5061f5;" >
+                <h2 style="color:white">Financial Intelligence</h2>
+            </div>
+            <form class="m-t">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="E-mail" required="true" ng-model='user.email'>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Senha" required="true" ng-model="user.password">
+                </div>
+                <button  class="btn btn-financial-Intelligence block full-width m-b" ng-click="vm.login(user)" style="background-color:rgb(253, 253, 253); color:rgb(0, 0, 0)">Entrar</button>
+            </form>
+            <p class="m-t" style="color:white"> <small>Financial Intelligence &copy; 2018</small></p>
+        </div>
+    </div>
+
+</body>
+</html>

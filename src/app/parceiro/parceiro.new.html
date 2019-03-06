@@ -1,0 +1,194 @@
+<div class="ibox-content">
+    <div class="row" style="margin-left:1%; margin-right:1%">
+        <h2 ng-if="partners._id === new">Cadastre um novo cliente ou fornecedor<spam class="pull-right" style="cursor:pointer"><i class="fa fa-close" ng-click="vm.close()" style="color:red"></i></spam></h2>
+        <h2 ng-if="partners._id">Edite os dados do cliente / fornecedor<spam class="pull-right" style="cursor:pointer"><i class="fa fa-close" ng-click="vm.close()" style="color:red"></i></spam></h2>
+        <br>
+        <form id="form" ng-submit="register(form)">
+                <div class="row">                    
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <h4><b>Classificação*</b></h4>
+                        <div class="switch__container">
+                            <input id="switch-shadow" class="switch switch--shadow" ng-model="partners.client" type="checkbox">
+                            <label for="switch-shadow" style="margin-bottom:10px"><span style="margin-left:50px">Cliente</span></label> 
+                            <input id="switch-shadow1" class="switch switch--shadow" ng-model="partners.provider" type="checkbox">
+                            <label for="switch-shadow1"><span style="margin-left:50px">Fornecedor</span></label> 
+                        </div>
+                     <!--   <div class="input-group m-b">                            
+                                <input type="checkbox" ng-model="partners.client" id="campo-checkbox1" />
+                                <label for="campo-checkbox1">Cliente</label><br>
+                                <input type="checkbox" ng-model="partners.provider" id="campo-checkbox" />
+                                <label for="campo-checkbox">Fornecedor</label>
+                            </div>  !-->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <h4><b>Tipo*</b></h4>
+                            <div class="switch__container">
+                                    <input id="switch-shadow2" class="switch switch--shadow" value="Pessoa Jurídica" ng-model="partners.type" type="radio">
+                                    <label for="switch-shadow2" style="margin-bottom:10px"><span style="margin-left:50px">Pessoa&nbspJurídica</span></label> 
+                                    <input id="switch-shadow3" class="switch switch--shadow" value="Pessoa Física" ng-model="partners.type" type="radio">
+                                    <label for="switch-shadow3"><span style="margin-left:50px">Pessoa&nbspFísica</span></label> 
+                                </div>
+                        <!--    <div class="input-group m-b">                            
+                                    <input type="radio" checked="checked" value="Pessoa Física" name="type" ng-model="partners.type" id="campo-checkbox2"/>
+                                    <label for="campo-checkbox2">Pessoa Física</label><br>
+                                    <input type="radio" value="Pessoa Jurídica" name="type" ng-model="partners.type" id="campo-checkbox3" />
+                                    <label for="campo-checkbox3">Pessoa Jurídica</label>
+                                </div>  !-->
+                        </div>
+                        <div class="col-lg-6">
+                                <h4><b>Nome*</b></h4>
+                                <div class="input-group m-b">
+                                        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                    <input type="text" placeholder="Nome" ng-model="partners.name" class="form-control" required>
+                                </div>
+                            </div>
+                    <div ng-if="partners.type ==='Pessoa Física'" class="col-lg-6">
+                        <h4><b>CPF*</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                <input type="text" placeholder="CPF" mask="999.999.999-99" ng-model="partners.registerNumber" class="form-control" required>
+                            </div>
+                    </div>
+                    <div ng-if="partners.type ==='Pessoa Jurídica'" class="col-lg-6">
+                            <h4><b>CNPJ*</b></h4>
+                            <div class="input-group m-b">
+                                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                    <input type="text" placeholder="CNPJ" mask="99.999.999/9999-99" ng-model="partners.registerNumber" class="form-control" required>
+                                </div>
+                        </div>
+                    <div class="col-lg-6">
+                        <h4><b>Telefone</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                            <input type="text" placeholder="Telefone" mask="(+99)(99)99999-9999" ng-model="partners.telefone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>E-mail</b></h4>
+                        <div class="input-group m-b"> 
+                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>                           
+                            <input type="email" placeholder="E-mail" ng-model="partners.email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>País</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                            <input type="text" placeholder="País" ng-model="partners.country" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>CEP</b></h4>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <input type="text" placeholder="CEP" mask="99.999-999" ng-change="vm.changeCEP(partners.cep)" ng-model="partners.cep" class="form-control" />
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>Logradouro</b></h4>
+                        <div class="input-group m-b">
+                            <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <input type="text" placeholder="Logradouro" ng-model="partners.address" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>Número</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <input type="text" placeholder="Número"  ng-model="partners.number" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>Bairro</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <input type="text" placeholder="Bairro" ng-model="partners.district" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>Complemento</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <input type="text" placeholder="Complemento" ng-model="partners.address2" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h4><b>Cidade</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <input type="text" placeholder="Cidade" ng-model="partners.city" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4><b>Estado</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                            <select class="form-control" ng-model="partners.state">
+                                    <option value="" selected disabled>Selecione um estado</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                    </div>                    
+                    <div class="col-lg-6">
+                            <h4><b>Site</b></h4>
+                            <div class="input-group m-b">
+                                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                <input type="text" placeholder="Site" ng-model="partners.site" class="form-control" />
+                            </div>
+                        </div>                                      
+                    <div class="col-lg-12">
+                        <h4><b>Observações</b></h4>
+                        <div class="input-group m-b">
+                                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                            <textarea class="form-control" placeholder="Digite aqui as observações" cols="40" rows="6" ng-model="partners.observation" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <br><br>
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-2">
+                        <input type="submit" class="form-control btn btn-success" value="Salvar" />                         
+                    </div>                    
+                    <div class="col-lg-5"></div>
+                </div>
+            </form>
+    </div>
+</div>
+
+<style>
+    .switch--shadow+label:after{
+        background-color: #ffffff00;
+    }
+    .switch--shadow+label:before {
+    background-color: #e9e9e9;
+}
+</style>

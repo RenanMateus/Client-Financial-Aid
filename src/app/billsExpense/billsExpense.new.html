@@ -1,0 +1,296 @@
+<div class="ibox-content">
+    <div class="row" style="margin-left:2%; margin-right:2%">
+        <h2>Nova Conta a pagar
+            <spam class="pull-right" style="cursor:pointer">
+                <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
+            </spam>
+        </h2>
+        <br>
+        <form id="form" ng-submit="register(form)">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="btn-group">
+                        <label class="btn btn-{{billsExpense.type === 'Normal' ? 'success':'white'}}" ng-model="billsExpense.type" uib-btn-radio="'Normal'"
+                            value="Normal">Normal</label>
+                        <label class="btn btn-{{billsExpense.type === 'Recorrente' ? 'primary':'white'}}" ng-model="billsExpense.type" uib-btn-radio="'Recorrente'"
+                            value="Recorrente">Recorrente </label>
+                        <label class="btn btn-{{billsExpense.type === 'Parcelada' ? 'danger':'white'}}" ng-model="billsExpense.type" uib-btn-radio="'Parcelada'"
+                            value="Parcelada">Parcelada</label>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>
+                        <b>Valor a Pagar*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">R$</span>
+                        <input id="value" ng-model="billsExpense.value" class="form-control" required/>
+                    </div>
+                </div>
+                <div ng-if="billsExpense.type ==='Normal'" class="col-lg-2">
+                    <h4>
+                        <b>Paga?</b>
+                    </h4>
+                    <div class="switch__container">
+                        <input id="switch-shadow" class="switch switch--shadow" ng-model="billsExpense.ok" type="checkbox">
+                        <label for="switch-shadow"></label>
+                    </div>
+                    <!--   <div class="input-group m-b">
+                        <input type="checkbox" ng-model="billsExpense.ok" id="campo-checkbox5" />
+                    </div>  !-->
+                </div>
+                <div ng-if="billsExpense.type ==='Normal'" class="col-lg-7">
+                    <h4>
+                        <b>Descrição</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="text" placeholder="Descrição" ng-model="billsExpense.description" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.type !='Normal'" class="col-lg-9">
+                    <h4>
+                        <b>Descrição</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="text" placeholder="Descrição" ng-model="billsExpense.description" class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h4>
+                        <b>Vencimento*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="billsExpense.dueDate" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.type ==='Parcelada'" class="col-lg-4">
+                    <h4>
+                        <b>Nº Parcelas*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="number" ng-model="billsExpense.installmentTotal" class="form-control" required>
+                    </div>
+                </div>
+                <div ng-if="billsExpense.ok" class="col-lg-4">
+                    <h4>
+                        <b>Multa</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="number" ng-model="billsExpense.forfeit" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.ok" class="col-lg-4">
+                    <h4>
+                        <b>Juros</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">%</span>
+                        <input type="number" ng-model="billsExpense.interestRate" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.ok" class="col-lg-4">
+                    <h4>
+                        <b>Desconto</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">%</span>
+                        <input type="number" ng-model="billsExpense.discount" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.ok" class="col-lg-4">
+                    <h4>
+                        <b>Data de Pagamento*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="billsExpense.payday" class="form-control" required>
+                    </div>
+                </div>
+                <div ng-if="billsExpense.ok" class="col-lg-4">
+                    <h4>
+                        <b>Total Pago*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input disabled ng-model="billsExpense.total" ng-init="billsExpense.total = billsExpense.value" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h4>
+                        <b>Categoria</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Categoria" autocomplete="off" uib-typeahead="p as p.name for p in categories | filter:$viewValue | limitTo:15"
+                            ng-model="billsExpense._category" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.type !='Parcelada'" class="col-lg-4">
+                    <h4>
+                        <b>Documento</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="text" ng-model="billsExpense.docNumber" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.type ==='Parcelada'" class="col-lg-6">
+                    <h4>
+                        <b>Documento</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="text" ng-model="billsExpense.docNumber" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.ok" class="col-lg-4">
+                    <h4>
+                        <b>Data do Documento</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="billsExpense.docDate" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="!billsExpense.ok" class="col-lg-6">
+                    <h4>
+                        <b>Data do Documento</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="billsExpense.docDate" class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4>
+                        <b>Fornecedor</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Fornecedor" autocomplete="off" uib-typeahead="p as p.name  for p in providerPartners | filter:$viewValue | limitTo:15"
+                            ng-model="billsExpense._partner" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4>
+                        <b>Centro de Custo</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="" placeholder="Centro de Custo" autocomplete="off" uib-typeahead="p as p.name  for p in centerCost | filter:$viewValue | limitTo:15"
+                            ng-model="billsExpense._center" typeahead-no-results='noResults' class="form-control">
+                    </div>
+                </div>
+                <div ng-if="!billsExpense.ok" class="col-lg-6">
+                    <h4>
+                        <b>Mês de Competência</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="billsExpense.month" class="form-control">
+                    </div>
+                </div>
+                <div ng-if="billsExpense.ok" class="col-lg-2">
+                    <h4>
+                        <b>Mês de Competência</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="date" ng-model="billsExpense.month" class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <h4>
+                        <b>Observações</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <textarea class="form-control" placeholder="Digite aqui as observações" cols="40" rows="6" ng-model="billsExpense.observation"></textarea>
+                    </div>
+                </div>
+            </div>
+            <label style="text-align:justify; color:red" ng-if="billsExpense.type === 'Recorrente'">*Está conta será recorrente mensalmente ao longo de 36 meses.</label>
+            <div class="row">
+                <br>
+                <br>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-2">
+                    <input type="submit" class="form-control btn btn-success" value="Salvar" />
+                </div>
+                <div class="col-lg-5"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    #value {
+        direction: rtl
+    }
+</style>
+<script>
+    var mask = {
+        money: function () {
+            var el = this
+                , exec = function (v) {
+                    v = v.replace(/\D/g, "");
+                    v = new String(Number(v));
+                    var len = v.length;
+                    if (1 == len)
+                        v = v.replace(/(\d)/, "0.0$1");
+                    else if (2 == len)
+                        v = v.replace(/(\d)/, "0.$1");
+                    else if (len > 2) {
+                        v = v.replace(/(\d{2})$/, '.$1');
+                    }
+                    return v;
+                };
+            setTimeout(function () {
+                el.value = exec(el.value);
+            }, 1);
+        }
+    }
+
+    $(function () {
+        $('input#value').bind('keypress', mask.money)
+    });
+</script>

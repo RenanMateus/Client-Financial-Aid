@@ -1,0 +1,96 @@
+<div class="row" style="background-color: rgba(246, 249, 252, 0.836)">
+    <div class="col-lg-12" style="padding-left:30px;padding-right:30px; background-color: rgba(246, 249, 252, 0.836)">
+        <br>
+        <div class="row wrapper border-bottom white-bg page-heading" style="background-color: rgba(246, 249, 252, 0.836)">
+            <div class="col-lg-12" style="background-color: rgba(246, 249, 252, 0.836)">
+                <div class="row" style="background-color: rgba(246, 249, 252, 0.836)">
+                    <h2 class="col-md-6">Categorias</h2>
+                    <br>
+                    <div class="col-md-6 pull-right">
+                        <input type="button" value="Nova Categoria" class="btn btn-success pull-right" ng-click="openModal('new')">
+                    </div>
+                    <!--    <div class="input-group col-md-6 pull-right" style="margin-top:15px">
+                        <input type="text" placeholder="Procurar Categoria" ng-model="vm.searchText" ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)"
+                            class="input-sm form-control">
+                        <span class="input-group-btn">
+                            <button ng-click="vm.search(vm.searchText)" type="button" class="btn btn-sm btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div> !-->
+                </div>
+                <ol class="breadcrumb" style="background-color: rgba(246, 249, 252, 0.836)">
+                    <li>
+                        <a ui-sref="dashboard.home">Home</a>
+                    </li>
+                    <li class="active">
+                        <strong>Categorias</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content">
+            <span class="pull-left" ng-hide="visibleTable" style="margin-left:50px; font-size:12pt">
+                <b>Descrição</b>
+            </span>
+            <span class="pull-right" ng-hide="visibleTable" style="margin-right:50px; font-size:12pt">
+                <b>Ações</b>
+            </span>
+            <div class="ibox-content row animated fadeInDown" style="background-color: rgba(246, 249, 252, 0.836)">
+                <ul class="nav metismenu" id="side-menu" ng-repeat="c in categories">
+                    <li ng-if="c._dad == null" class="nav" style="background-color:white; cursor:default">
+                        <a style="cursor:default; background-color:rgba(209, 209, 209, 0.747)">
+                            <i class="fa fa-tag"></i>
+                            <span class="nav-label" style="color:black">
+                                <strong>{{c.name}}</strong>
+                                <button title="Excluir Categoria" ng-click="deleteCategory(c._id)" class="pull-right btn btn-sm btn-danger" style="margin-left:5px; width:35px; margin-top:-5px">
+                                    <i class="fa fa-lg fa-trash"></i>
+                                </button>
+                                <button title="Editar Categoria" ng-click="openModalEdit(c._id)" class="pull-right btn btn-sm btn-warning" style="margin-left:5px; width:35px; margin-top:-5px">
+                                    <i class="fa fa-lg fa-edit"></i>
+                                </button>
+                                <button title="Adicionar Sub-Categoria" class="pull-right btn btn-sm btn-success" ng-click="openModalSub(c._id, 'new')" style="width:35px; margin-top:-5px">
+                                    <i class="fa fa-plus" style="margin-left:2px"></i>
+                                </button>
+                            </span>
+                        </a>
+                        <ul class="nav" ng-repeat="d in categories" style="background-color:white">
+                            <li ng-if="d._dad == c._id" style="padding:2ch; background-color:rgba(0, 0, 0, 0.05)">
+                                <span style="margin-left:5%; color:rgba(0, 0, 0, 0.74)">
+                                    {{d.name}}
+                                    <button title="Excluir Sub-Categoria" ng-click="deleteSubCategory(d._id)" class="pull-right btn btn-sm btn-danger" style="margin-left:5px; width:35px; margin-top:-5px; margin-right:4px">
+                                        <i class="fa fa-lg fa-trash"></i>
+                                    </button>
+                                    <button title="Editar Sub-Categoria" ng-click="openModalEditSub(d._id, 'edit')" class="pull-right btn btn-sm btn-warning"
+                                        style="margin-left:5px; width:35px; margin-top:-5px">
+                                        <i class="fa fa-lg fa-edit"></i>
+                                    </button>
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div ng-if="!categories">
+                    <spam class="col-lg-12" style="font-size:18pt; text-align:center">
+                        <strong style="color:#a927fa">{{vm.textErro}}</strong>
+                    </spam>
+                </div>
+                <div ng-if="vm.totalItems == 0">
+                    <spam class="col-lg-12" style="font-size:18pt; text-align:center">
+                        <strong style="color:#a927fa">{{vm.notifyErro}}</strong>
+                    </spam>
+                </div>
+                <div ng-hide="assyncRequest" class="spinner-example wrapper wrapper-content " id="spinner">
+                    <div class="sk-spinner sk-spinner-chasing-dots">
+                        <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
+                        <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
+                    </div>
+                </div>
+            </div>
+            <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems" max-size='3' ng-model="currentPage" ng-change="vm.nextListCategories(currentPage)"
+                class="pagination-sm" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
+                first-text="&laquo;" last-text="&raquo;" style="display: flex; align-items: center; justify-content: center">
+        </div>
+    </div>
+</div>

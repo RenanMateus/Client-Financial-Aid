@@ -1,0 +1,55 @@
+<!-- <div class="row border-bottom" ng-controller="AuthController as vm">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;background:#26384a">
+
+        <div class="profile-element nav navbar-top-links navbar-right" style="margin-right:5%;text-align:center;" uib-dropdown>
+
+            <a uib-dropdown-toggle href>
+            <br>
+            <span class="" style="color:white">{{::vm.getUser().name}}</span>&nbsp;
+               <i class="img-circle fa fa-user-o" style="color:white"></i>              
+             </a>
+
+            <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                <li><a >Perfil</a></li> 
+                <li class="divider"></li>
+                <li><a >Sair</a></li>
+            </ul>
+        </div>
+
+
+    </nav>
+</div> -->
+<audio id="#notifyAudio" hidden class="speed" src="./audio/tinder.mp3" controls></audio>
+<!-- Audio de notificação, fixo -->
+
+<div class="row border-bottom" style="background:#192a39 !important;" ng-controller="AuthController as vm">
+
+    <div class="col-lg-6" style="color:#c0c0c0;padding-top:1% !important">
+        <!-- <h4 ng-if="vm.user.profileName">Bem-vindo, {{vm.user.profileName}}</h4> -->
+    </div>
+    <nav class="col-lg-6 navbar navbar-static-top" role="navigation" style="margin-bottom: 0; height:50px;background:#192a39 !important;text-align:right">
+
+        <ul class="nav navbar-top-links navbar-right" style="margin-top:-5px;height:50px">
+            <!-- <div class="navbar-header" style="float: left">
+                        <span minimaliza-sidebar=""><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="" ng-click="minimalize()"><i class="fa fa-bars"></i></a></span>
+            </div> -->
+            <li>
+                <a ui-sref="dashboard.user_edit({id:vm.user._id})">
+                    <i style="color:white" class="fa fa-user"></i>
+                    <span style="color:white">{{vm.user.name}}</span>
+                </a>
+            </li>
+            <li>
+                <a ng-click="vm.logout()">
+                    <i class="fa fa-sign-out" style="color:white"></i>
+                    <span style="color:white">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<style>
+    .text-navy {
+        color: #192a39 !important;
+    }
+</style>

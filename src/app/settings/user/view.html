@@ -1,0 +1,333 @@
+<style>
+    nav-tabs>li>a {
+        color: #A7B1C2;
+        font-weight: 600;
+        padding: 10px 0px !important;
+    }
+
+    .tab-content>.tab-pane {
+        padding: 30px;
+    }
+</style>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Arimo);
+    label[for="file-input"] {
+        display: block;
+        margin-bottom: 1em;
+        font-size: 1em;
+        color: #fff;
+        opacity: .9;
+        font-weight: bold;
+    }
+
+    input[type="file"] {
+        cursor: pointer !Important;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+        background: #ed5565;
+        border: 0;
+        padding: 1em 2em;
+        cursor: pointer;
+        color: #fff;
+        border-radius: .2em;
+    }
+
+    input[type="file"]::-ms-browse {
+        background: #ed5565;
+        border: 0;
+        padding: 1em 2em;
+        cursor: pointer;
+        color: #fff;
+        border-radius: .2em;
+    }
+    input[type="text"]{
+        background-color: rgba(246, 249, 252, 0.836);
+    }   
+    input[type="date"]{
+        background-color: rgba(246, 249, 252, 0.836);
+    }  
+    .input-group-addon{
+        background-color: rgba(246, 249, 252, 0.836);
+    }
+    #btn-save{
+        background-color: rgba(246, 249, 252, 0.836);
+    }
+    #btn-save:hover{
+        background-color: rgb(74, 115, 250);
+    }
+</style>
+
+<div class="wrapper wrapper-content animated fadeInRightBig" id="tabular">
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <!--  ADICIONAR NOVO USUÁRIO !-->
+                <form id="form2" ng-submit="vm.register(form2)" class="ibox-content" ng-if="vm.id === 'new'" style="background-color: rgba(246, 249, 252, 0.836)">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p style="font-size:16pt"><b>Criar um novo usuário:</b></p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>
+                                <b>Email de login*</b>
+                            </h4>
+                            <div class="input-group m-b">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="text" placeholder="Email de login" ng-model="newUser.email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h4>
+                                <b>Nome*</b>
+                            </h4>
+                            <div class="input-group m-b">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="text" placeholder="Nome completo" ng-model="newUser.name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h4>
+                                <b>Senha*</b>
+                            </h4>
+                            <div class="input-group m-b">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="password" placeholder="senha" ng-model="newUser.password" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <br>
+                        <br>
+                        <div class="col-lg-5">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" class="form-control btn btn-success" value="Salvar" />
+                        </div>
+                        <div class="col-lg-5">
+                        </div>
+                    </div>
+                </form>
+
+                <form id="form" ng-submit="vm.register(form)" class="ibox-content" ng-if="vm.id != 'new'" style="background-color: rgba(246, 249, 252, 0.836)">
+                 <!--   <input type="button" class="btn btn-primary pull-left" value="Adicionar Usuário" ui-sref="dashboard.user_edit({id:'new'})"  
+                    />  !-->
+                    <input type="button" class="btn btn-primary pull-right" value="Mudar senha" ui-sref="dashboard.user_password({id:vm.id})"
+                    />
+
+                    <div class="row" style="margin-top:5%">
+                        <div class="col-md-12">
+                            <p style="font-size:12pt">Dados de Acesso:</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>
+                                <b>Email de login</b>
+                            </h4>
+                            <div class="input-group m-b">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="text" placeholder="Email de login" ng-model="vm.user.email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div>
+                            <!-- Dados pessoais do usuário -->
+                            <div class="col-md-12">
+                                <p style="font-size:12pt">Dados Pessoais:</p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Nome</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" placeholder="Nome completo" ng-model="vm.user.name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Nascimento</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    <input type="date" ng-model="vm.user.birthday" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Sexo*</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <div class="btn-group col-md-12 col-sm-12 col-xs-12">
+                                        <label class="btn btn-{{vm.user.gender == 'MALE' ? 'success':'white'}}" ng-model="vm.user.gender" uib-btn-radio="'MALE'">
+                                            <i class="fa fa-male"></i> Masculino</label>
+                                        <label class="btn btn-{{vm.user.gender == 'FEMALE' ? 'danger':'white'}}" ng-model="vm.user.gender" uib-btn-radio="'FEMALE'">
+                                            <i class="fa fa-female"></i> Feminino</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dados documentais do usuário -->
+                            <div class="col-md-12">
+                                <p style="font-size:12pt">Documentação:</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>CPF</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user-o"></i>
+                                    </span>
+                                    <input type="text" placeholder="CPF" mask="999.999.999-99" ng-model="vm.user.cpf" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Nº Identidade</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <input type="text" placeholder="Nº Identidade" ng-model="vm.user.identityNumber" class="form-control">
+                                </div>
+                            </div>
+
+                            <!-- Dados de Endereço do usuário -->
+                            <div class="col-md-12">
+                                <p style="font-size:12pt">Endereço:</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>CEP</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <input type="text" placeholder="CEP" ng-change="vm.changeCEP(vm.user.cep)" mask="99.999-999" ng-model="vm.user.cep" class="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Logradouro</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <input type="text" placeholder="Logradouro" ng-model="vm.user.publicPlace" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Numero</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <input type="text" placeholder="Número" ng-model="vm.user.number" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Complemento</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <input type="text" placeholder="Complemento" ng-model="vm.user.compl" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Cidade</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <input type="text" placeholder="Cidade" ng-model="vm.user.country" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>
+                                    <b>Estado</b>
+                                </h4>
+                                <div class="input-group m-b">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <select class="form-control" ng-model="vm.user.state" style="background-color: rgba(246, 249, 252, 0.836);">
+                                        <option value="" selected disabled>Selecione um estado</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <br>
+                        <br>
+                        <div class="col-lg-5">
+                        </div>
+                        <div class="col-lg-2">
+                            <input id="btn-save" type="submit" class="form-control btn btn-success" value="Salvar" />
+                        </div>
+                        <div class="col-lg-5">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

@@ -1,0 +1,73 @@
+<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+<div class="ibox-content">
+    <div class="row" style="margin-left:1%; margin-right:1%">
+        <h2 ng-if="centers._id === new">Cadastre um novo Centro de Custo / Centro de Receita
+            <spam class="pull-right" style="cursor:pointer">
+                <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
+            </spam>
+        </h2>
+        <h2 ng-if="centers._id">Edite o Centro de Custo / Centro de Receita
+            <spam class="pull-right" style="cursor:pointer">
+                <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
+            </spam>
+        </h2>
+        <br>
+        <form id="form" ng-submit="register(form)">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <h4>
+                        <b>Classificação*</b>
+                    </h4>
+                    <div class="switch__container">
+                        <input id="switch-shadow" class="switch switch--shadow" ng-model="centers.revenue" type="checkbox">
+                        <label for="switch-shadow" style="margin-bottom:20px">
+                            <span style="margin-left:50px">Centro&nbspde&nbspReceita</span>
+                        </label>
+                        <input id="switch-shadow1" class="switch switch--shadow" ng-model="centers.cost" type="checkbox">
+                        <label for="switch-shadow1">
+                            <span style="margin-left:50px">Centro&nbspde&nbspCusto</span>
+                        </label>
+                    </div>
+                    <!--    <div class="input-group m-b">
+                        <input type="checkbox" ng-model="centers.revenue" id="campo-checkbox1" style="height:17px;width:20px" />
+                        <label for="campo-checkbox1" style="font-size:11pt">Centro de Receita</label>
+                        <br>
+                        <br>
+                        <input type="checkbox" ng-model="centers.cost" id="campo-checkbox" style="height:17px;width:20px" />
+                        <label for="campo-checkbox" style="font-size:11pt">Centro de Custo</label>
+                    </div>                    !-->
+                </div>
+                <div class="col-lg-8">
+                    <h4>
+                        <b>Nome*</b>
+                    </h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <input type="text" placeholder="Nome" ng-model="centers.name" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <br>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-2">
+                    <input type="submit" class="form-control btn btn-success" value="Salvar" />
+                </div>
+                <div class="col-lg-5"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .switch--shadow+label:after {
+        background-color: #f4f4f867;
+    }
+
+    .switch--shadow+label:before {
+        background-color: #cccaca;
+    }
+</style>
