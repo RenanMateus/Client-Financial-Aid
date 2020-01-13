@@ -8,7 +8,7 @@
 
                         </div>
                         <div class="col-xs-12 text-right">
-                            <span>Contas a Pagar</span>
+                            <span>Contas restantes a Pagar</span>
                             <h2 class="font-bold">
                                 <span ng-if="vm.values.billsToPay">{{vm.values.billsToPay | currency:'R$'}}</span>
                                 <span ng-if="!vm.values.billsToPay">{{'R$0.00'}}</span>
@@ -25,7 +25,7 @@
                         <div class="col-xs-4">
                         </div>
                         <div class="col-xs-12 text-right">
-                            <span>Contas a Receber</span>
+                            <span>Contas restantes a Receber</span>
                             <h2 class="font-bold">
                                 <spam ng-if="vm.values.billsToReceive">{{vm.values.billsToReceive | currency:'R$'}}</spam>
                                 <spam ng-if="!vm.values.billsToReceive">{{'R$0.00'}}</spam>
@@ -60,7 +60,7 @@
                         <div class="col-xs-4">
                         </div>
                         <div class="col-xs-12 text-right">
-                            <span>Vencidas</span>
+                            <span>Contas Vencidas</span>
                             <h2 class="font-bold" style="font-size:21pt">
                                 <span>
                                     <i class="fa fa-plus"></i>

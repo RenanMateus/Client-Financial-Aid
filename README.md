@@ -1,25 +1,25 @@
-# README #
+# Começando 
 
-Servidor do Front do Financial Intelligence
+Este README descreve os passos necessários para execução do front-end do FINANCIAL AID
 
 ### Passos para instalação e rodar para teste ###
 
 * Instale o Gulp
-* instale as depências com o comando "npm install"
+* instale as depêndencias com o comando "npm install"
 * execute com o comando "gulp start"
 
 ### Atualizando o servidor ###
 
-* Conecte-se usando SSH, os dados de acesso estão no drive
 * navegue até o diretório client-web
 * Dê um git pull
 * Dê um gulp build
 
-
 ### Dependência Externas ###
 
-* instale o Gulp
+* instalar o Gulp
 
-### Com quem eu falo ###
+### Responsáveis ###
 
-* Este repositório é de responsabilidade de Renan Mateus <renanmateus09@gmail.com>
+Este repositório é de responsabilidade de:
+ 
+* Renan Mateus <renanmateus09@gmail.com>
