@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-lg-12" style="padding-left:30px;padding-right:30px; background-color: rgba(246, 249, 252, 0.836)">
         <br>
-        <div class="row wrapper border-bottom white-bg page-heading" style="background-color: rgba(246, 249, 252, 0.836)">
+        <div class="row wrapper border-bottom white-bg page-heading"
+            style="background-color: rgba(246, 249, 252, 0.836)">
             <div class="col-lg-12" style="background-color: rgba(246, 249, 252, 0.836)">
                 <div class="row" style="background-color: rgba(246, 249, 252, 0.836)">
                     <h2 class="col-md-6">Conciliação</h2>
                     <br>
                     <div class="col-md-6 pull-right">
-                        <input type="button" value="Conciliar" class="btn btn-success pull-right" ng-click="vm.conciliation()">
+                        <input type="button" value="Conciliar" class="btn btn-success pull-right"
+                            ng-click="vm.conciliation()">
                     </div>
                 </div>
                 <ol class="breadcrumb" style="background-color: rgba(246, 249, 252, 0.836)">
@@ -20,52 +22,68 @@
                 </ol>
             </div>
         </div>
-
+        <div>
+            <h5 style="color:red">Para conciliar as contas com os lançamentos, selecione a conta desejada, e o
+                lanaçamento correspondente aquela conta, depois clique no botão conciliar.</h5>
+        </div>
         <div class="wrapper wrapper-content" style="background-color: rgba(246, 249, 252, 0.836)">
             <div class="ibox-content row animated fadeInDown" style="background-color: rgba(246, 249, 252, 0.836)">
                 <div class="container col-lg-6" style="padding:20px 20px 20px 20px">
                     <div class="row">
+                        <h4>Filtro</h4>
                         <h4>Contas a Pagar/Receber</h4>
                         <div class="pull-left" style="margin-bottom:10px">
-                            <input type="text" placeholder="Pesquisar" ng-model="searchTextB" ng-keydown="$event.keyCode === 13 && vm.searchB(searchTextB)"
-                                class="input-sm form-control" style="background-color: rgba(246, 249, 252, 0.836); border-color:rgba(0, 0, 0, 0.185); border-width:1px">
+                            <input type="text" placeholder="Pesquisar" ng-model="searchTextB"
+                                ng-keydown="$event.keyCode === 13 && vm.searchB(searchTextB)"
+                                class="input-sm form-control"
+                                style="background-color: rgba(246, 249, 252, 0.836); border-color:rgba(0, 0, 0, 0.185); border-width:1px">
                             <div class="pull-left" style="margin-top:1ch">
                                 <spam style="margin-right:5px; font-size:10pt">
                                     <strong style="font-weight:900; color:black">De</strong>
                                 </spam>
-                                <input type="date" ng-model="vm.startB" ng-keydown="$event.keyCode === 13 && vm.searchB(searchTextB)" style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;"
-                                />
+                                <input type="date" ng-model="vm.startB"
+                                    ng-keydown="$event.keyCode === 13 && vm.searchB(searchTextB)"
+                                    style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;" />
                                 <i class="fa fa-calendar" style="color:blue; font-size:13pt"></i>
                                 <spam style="margin-right:5px;margin-left:1px; font-size:10pt">
                                     <strong style="font-weight:900; color:black">Até</strong>
                                 </spam>
-                                <input type="date" ng-model="vm.endB" ng-keydown="$event.keyCode === 13 && vm.searchB(searchTextB)" style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;"
-                                />
+                                <input type="date" ng-model="vm.endB"
+                                    ng-keydown="$event.keyCode === 13 && vm.searchB(searchTextB)"
+                                    style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;" />
                                 <i class="fa fa-calendar" style="color:blue; font-size:13pt"></i>
                             </div>
                             <span class="input-group-btn">
-                                <button ng-click="vm.searchB(searchTextB)" type="button" class="btn btn-sm btn-success" style="margin-top:1ch; margin-left:1ch; height:4ch; width:4ch; border-radius:5px; padding:4px">
+                                <button ng-click="vm.searchB(searchTextB)" type="button" class="btn btn-sm btn-success"
+                                    style="margin-top:1ch; margin-left:1ch; height:4ch; width:4ch; border-radius:5px; padding:4px">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
                         </div>
                         <div style="margin-left:95px">
-                            <i title="Mês Anterior" ng-click="vm.backDateB()" class="glyphicon glyphicon-circle-arrow-left" style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
-                            <button class="btn" ng-click="vm.actuaDateB()" style="color: white; background-color:rgb(255, 136, 0); margin-top:-10px; height:25px; width:127px; padding:2px; margin-right:15px; margin-left:15px; cursor:pointer">{{vm.month}}</button>                            
-                            <i title="Próximo Mês" ng-click="vm.nextDateB()" class="glyphicon glyphicon-circle-arrow-right" style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
+                            <i title="Mês Anterior" ng-click="vm.backDateB()"
+                                class="glyphicon glyphicon-circle-arrow-left"
+                                style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
+                            <button class="btn" ng-click="vm.actuaDateB()"
+                                style="color: white; background-color:rgb(255, 136, 0); margin-top:-10px; height:25px; width:127px; padding:2px; margin-right:15px; margin-left:15px; cursor:pointer">{{vm.month}}</button>
+                            <i title="Próximo Mês" ng-click="vm.nextDateB()"
+                                class="glyphicon glyphicon-circle-arrow-right"
+                                style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
                         </div>
                     </div>
                     <br>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:1%">
                         <div class="switch__container">
                             <div class="col-lg-4">
-                                <input id="switch-shadow" class="switch switch--shadow" ng-model="vm.billExpense" type="checkbox">
+                                <input id="switch-shadow" class="switch switch--shadow" ng-model="vm.billExpense"
+                                    type="checkbox">
                                 <label for="switch-shadow" style="margin-bottom:10px">
                                     <span style="margin-left:50px">Contas&nbspa&nbspPagar</span>
                                 </label>
                             </div>
                             <div class="col-lg-8">
-                                <input id="switch-shadow1" class="switch switch--shadow" ng-model="vm.billRecipe" type="checkbox">
+                                <input id="switch-shadow1" class="switch switch--shadow" ng-model="vm.billRecipe"
+                                    type="checkbox">
                                 <label for="switch-shadow1">
                                     <span style="margin-left:50px">Contas&nbspa&nbspReceber</span>
                                 </label>
@@ -73,78 +91,10 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="vm.bill(c)" ng-repeat="c in bills" style="margin-bottom:5px">
-                        <div class="card-conciliation row" style="padding:15px; background-color:rgba(66, 66, 245, 0.2)" ng-if="vm.bills._id == c._id">
-                            <div class="col-12">                                    
-                                <span title="{{c.description}}" class="col-lg-4" ng-if="c.description">
-                                    <b>Descrição:</b> {{c.description.substring(0,15)}}</span>
-                                <span class="col-lg-4" ng-if="!c.description">
-                                    <b>Descrição:</b> ----</span>
-                                <span class="col-lg-4" ng-if="c.credit" style="padding-left:2ch">
-                                    <b>Tipo:</b> A Receber</span>
-                                <span class="col-lg-4" ng-if="!c.credit" style="padding-left:2ch">
-                                    <b>Tipo:</b> A Pagar</span>
-                                <span class="col-lg-4" style="padding-left:2ch">
-                                    <b>Valor:</b> {{c.value | currency:'R$'}}</span>
-                                <span class="col-lg-4">
-                                    <br>
-                                    <b>Vencimento:</b> {{c.dueDate | date:'dd/MM/yyyy'}}</span>
-                                <span class="col-lg-4" ng-if="c.credit && c.ok" style="padding-left:2ch;">
-                                    <br>
-                                    <span style="color:rgb(2, 197, 2)">Recebido</span>
-                                    <i class="fa fa-check" style="color:rgb(2, 197, 2)"></i>
-                                </span>
-                                <span class="col-lg-4" ng-if="!c.credit && c.ok" style="padding-left:2ch">
-                                    <br>
-                                    <span style="color:rgb(2, 197, 2)">Pago</span>
-                                    <i class="fa fa-check" style="color:rgb(2, 197, 2)"></i>
-                                </span>
-                                <span class="col-lg-4" ng-if="c.credit && !c.ok" style="padding-left:2ch">
-                                    <br>
-                                    <span style="color:rgb(218, 10, 10)"> Não Recebido</span>
-                                    <i class="fa fa-warning" style="color:rgb(218, 10, 10)"></i>
-                                </span>
-                                <span class="col-lg-4" ng-if="!c.credit && !c.ok" style="padding-left:2ch">
-                                    <br>
-                                    <span style="color:rgb(218, 10, 10)">Não Pago</span>
-                                    <i class="fa fa-warning" style="color:rgb(218, 10, 10)"></i>
-                                </span>
-
-                                <span class="col-lg-4" ng-if="c.credit && c.ok">
-                                    <br>
-                                    <b>Valor Recebido: </b>{{c.total | currency:'R$'}}</span>
-                                <span class="col-lg-4" ng-if="c.credit && !c.ok">
-                                    <br>
-                                    <b>Valor Recebido: </b>----</span>
-                                <span class="col-lg-4" ng-if="!c.credit && c.ok">
-                                    <br>
-                                    <b>Valor Pago: </b>{{c.total | currency:'R$'}}</span>
-                                <span class="col-lg-4" ng-if="!c.credit && !c.ok">
-                                    <br>
-                                    <b>Valor Pago: </b>----</span>
-                                <span class="col-lg-4" ng-if="c.credit && c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
-
-                                    <b>Recebido em: </b>{{c.payday | date:'dd/MM/yyyy'}} </span>
-                                <span class="col-lg-4" ng-if="c.credit && !c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
-                                    <br>
-                                    <b>Recebido em: </b>---- </span>
-                                <span class="col-lg-4" ng-if="!c.credit && c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
-
-                                    <b>Pago em: </b>{{c.payday | date:'dd/MM/yyyy'}} </span>
-                                <span class="col-lg-4" ng-if="!c.credit && !c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
-                                    <br>
-                                    <b>Pago em: </b>---- </span>
-                                <span class="col-lg-4" ng-if="!c.ok && !c.credit">
-                                    <br>
-                                    <a ng-click="vm.payBill(c._id)" style="font-size:9pt">Pagar</a>
-                                </span>
-                                <span class="col-lg-4" ng-if="!c.ok && c.credit">
-                                    <br>
-                                    <a ng-click="vm.recipeBill(c._id)" style="font-size:9pt">Receber</a>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="card-conciliation row" style="padding:15px; cursor:pointer" ng-if="vm.bills._id != c._id">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="vm.bill(c)" ng-repeat="c in bills"
+                        style="margin-bottom:5px">
+                        <div class="card-conciliation row" style="padding:15px; background-color:rgba(66, 66, 245, 0.2)"
+                            ng-if="vm.bills._id == c._id">
                             <div class="col-12">
                                 <span title="{{c.description}}" class="col-lg-4" ng-if="c.description">
                                     <b>Descrição:</b> {{c.description.substring(0,15)}}</span>
@@ -192,16 +142,20 @@
                                 <span class="col-lg-4" ng-if="!c.credit && !c.ok">
                                     <br>
                                     <b>Valor Pago: </b>----</span>
-                                <span class="col-lg-4" ng-if="c.credit && c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
+                                <span class="col-lg-4" ng-if="c.credit && c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
 
                                     <b>Recebido em: </b>{{c.payday | date:'dd/MM/yyyy'}} </span>
-                                <span class="col-lg-4" ng-if="c.credit && !c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
+                                <span class="col-lg-4" ng-if="c.credit && !c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
                                     <br>
                                     <b>Recebido em: </b>---- </span>
-                                <span class="col-lg-4" ng-if="!c.credit && c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
+                                <span class="col-lg-4" ng-if="!c.credit && c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
 
                                     <b>Pago em: </b>{{c.payday | date:'dd/MM/yyyy'}} </span>
-                                <span class="col-lg-4" ng-if="!c.credit && !c.ok" style="padding-left:2ch; color:rgb(2, 197, 2)">
+                                <span class="col-lg-4" ng-if="!c.credit && !c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
                                     <br>
                                     <b>Pago em: </b>---- </span>
                                 <span class="col-lg-4" ng-if="!c.ok && !c.credit">
@@ -213,8 +167,83 @@
                                     <a ng-click="vm.recipeBill(c._id)" style="font-size:9pt">Receber</a>
                                 </span>
                             </div>
-                        </div>                        
-                    </div>     
+                        </div>
+                        <div class="card-conciliation row" style="padding:15px; cursor:pointer"
+                            ng-if="vm.bills._id != c._id">
+                            <div class="col-12">
+                                <span title="{{c.description}}" class="col-lg-4" ng-if="c.description">
+                                    <b>Descrição:</b> {{c.description.substring(0,15)}}</span>
+                                <span class="col-lg-4" ng-if="!c.description">
+                                    <b>Descrição:</b> ----</span>
+                                <span class="col-lg-4" ng-if="c.credit" style="padding-left:2ch">
+                                    <b>Tipo:</b> A Receber</span>
+                                <span class="col-lg-4" ng-if="!c.credit" style="padding-left:2ch">
+                                    <b>Tipo:</b> A Pagar</span>
+                                <span class="col-lg-4" style="padding-left:2ch">
+                                    <b>Valor:</b> {{c.value | currency:'R$'}}</span>
+                                <span class="col-lg-4">
+                                    <br>
+                                    <b>Vencimento:</b> {{c.dueDate | date:'dd/MM/yyyy'}}</span>
+                                <span class="col-lg-4" ng-if="c.credit && c.ok" style="padding-left:2ch;">
+                                    <br>
+                                    <span style="color:rgb(2, 197, 2)">Recebido</span>
+                                    <i class="fa fa-check" style="color:rgb(2, 197, 2)"></i>
+                                </span>
+                                <span class="col-lg-4" ng-if="!c.credit && c.ok" style="padding-left:2ch">
+                                    <br>
+                                    <span style="color:rgb(2, 197, 2)">Pago</span>
+                                    <i class="fa fa-check" style="color:rgb(2, 197, 2)"></i>
+                                </span>
+                                <span class="col-lg-4" ng-if="c.credit && !c.ok" style="padding-left:2ch">
+                                    <br>
+                                    <span style="color:rgb(218, 10, 10)"> Não Recebido</span>
+                                    <i class="fa fa-warning" style="color:rgb(218, 10, 10)"></i>
+                                </span>
+                                <span class="col-lg-4" ng-if="!c.credit && !c.ok" style="padding-left:2ch">
+                                    <br>
+                                    <span style="color:rgb(218, 10, 10)">Não Pago</span>
+                                    <i class="fa fa-warning" style="color:rgb(218, 10, 10)"></i>
+                                </span>
+
+                                <span class="col-lg-4" ng-if="c.credit && c.ok">
+                                    <br>
+                                    <b>Valor Recebido: </b>{{c.total | currency:'R$'}}</span>
+                                <span class="col-lg-4" ng-if="c.credit && !c.ok">
+                                    <br>
+                                    <b>Valor Recebido: </b>----</span>
+                                <span class="col-lg-4" ng-if="!c.credit && c.ok">
+                                    <br>
+                                    <b>Valor Pago: </b>{{c.total | currency:'R$'}}</span>
+                                <span class="col-lg-4" ng-if="!c.credit && !c.ok">
+                                    <br>
+                                    <b>Valor Pago: </b>----</span>
+                                <span class="col-lg-4" ng-if="c.credit && c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
+
+                                    <b>Recebido em: </b>{{c.payday | date:'dd/MM/yyyy'}} </span>
+                                <span class="col-lg-4" ng-if="c.credit && !c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
+                                    <br>
+                                    <b>Recebido em: </b>---- </span>
+                                <span class="col-lg-4" ng-if="!c.credit && c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
+
+                                    <b>Pago em: </b>{{c.payday | date:'dd/MM/yyyy'}} </span>
+                                <span class="col-lg-4" ng-if="!c.credit && !c.ok"
+                                    style="padding-left:2ch; color:rgb(2, 197, 2)">
+                                    <br>
+                                    <b>Pago em: </b>---- </span>
+                                <span class="col-lg-4" ng-if="!c.ok && !c.credit">
+                                    <br>
+                                    <a ng-click="vm.payBill(c._id)" style="font-size:9pt">Pagar</a>
+                                </span>
+                                <span class="col-lg-4" ng-if="!c.ok && c.credit">
+                                    <br>
+                                    <a ng-click="vm.recipeBill(c._id)" style="font-size:9pt">Receber</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                     <div ng-if="!bills">
                         <spam class="col-lg-12" style="font-size:18pt; text-align:center; margin-top:20px">
                             <strong style="color:#a927fa">{{vm.textErro}}</strong>
@@ -226,14 +255,17 @@
                         </spam>
                     </div>
                     <div ng-hide="assyncRequest" class="spinner-example wrapper wrapper-content " id="spinner">
-                        <div class="sk-spinner sk-spinner-chasing-dots col-lg-6" style="margin-top:20px; margin-left:50%">
+                        <div class="sk-spinner sk-spinner-chasing-dots col-lg-6"
+                            style="margin-top:20px; margin-left:50%">
                             <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
                             <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
                         </div>
-                    </div>               
-                    <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItemsB" max-size='3' ng-model="currentPageB"
-                        ng-change="vm.nextListBills(currentPageB)" class="pagination-sm" rotate="false" previous-text="&lsaquo;"
-                        next-text="&rsaquo;" items-per-page="vm.itemsPerPageB" first-text="&laquo;" last-text="&raquo;" style="margin-left:60%; margin-top:0px">
+                    </div>
+                    <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true"
+                        total-items="vm.totalItemsB" max-size='3' ng-model="currentPageB"
+                        ng-change="vm.nextListBills(currentPageB)" class="pagination-sm" rotate="false"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPageB"
+                        first-text="&laquo;" last-text="&raquo;" style="margin-left:60%; margin-top:0px">
                 </div>
 
 
@@ -244,47 +276,60 @@
                 <!--  ######  Lançamentos  ######## !-->
                 <div class="container col-lg-6" style="padding:20px 20px 20px 20px">
                     <div class="row">
+                        <h4>Filtro</h4>
                         <h4>Lançamentos do Movimento Bancário</h4>
                         <div class="pull-left" style="margin-bottom:10px">
-                            <input type="text" placeholder="Pesquisar" ng-model="searchTextL" ng-keydown="$event.keyCode === 13 && vm.searchL(searchTextL)"
-                                class="input-sm form-control" style="background-color: rgba(246, 249, 252, 0.836); border-color:rgba(0, 0, 0, 0.185); border-width:1px">
+                            <input type="text" placeholder="Pesquisar" ng-model="searchTextL"
+                                ng-keydown="$event.keyCode === 13 && vm.searchL(searchTextL)"
+                                class="input-sm form-control"
+                                style="background-color: rgba(246, 249, 252, 0.836); border-color:rgba(0, 0, 0, 0.185); border-width:1px">
                             <div class="pull-left" style="margin-top:1ch">
                                 <spam style="margin-right:5px; font-size:10pt">
                                     <strong style="font-weight:900; color:black">De</strong>
                                 </spam>
-                                <input type="date" ng-model="vm.startL" ng-keydown="$event.keyCode === 13 && vm.searchL(searchTextL)" style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;"
-                                />
+                                <input type="date" ng-model="vm.startL"
+                                    ng-keydown="$event.keyCode === 13 && vm.searchL(searchTextL)"
+                                    style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;" />
                                 <i class="fa fa-calendar" style="color:blue; font-size:13pt"></i>
                                 <spam style="margin-right:5px;margin-left:1px; font-size:10pt">
                                     <strong style="font-weight:900; color:black">Até</strong>
                                 </spam>
-                                <input type="date" ng-model="vm.endL" ng-keydown="$event.keyCode === 13 && vm.searchL(searchTextL)" style="color:black; width:21ch;  background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;"
-                                />
+                                <input type="date" ng-model="vm.endL"
+                                    ng-keydown="$event.keyCode === 13 && vm.searchL(searchTextL)"
+                                    style="color:black; width:21ch;  background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 12px;font-weight: bold;" />
                                 <i class="fa fa-calendar" style="color:blue; font-size:13pt"></i>
                             </div>
                             <span class="input-group-btn">
-                                <button ng-click="vm.searchL(searchTextL)" type="button" class="btn btn-sm btn-success" style="margin-top:1ch; margin-left:1ch; height:4ch; width:4ch; border-radius:5px; padding:4px">
+                                <button ng-click="vm.searchL(searchTextL)" type="button" class="btn btn-sm btn-success"
+                                    style="margin-top:1ch; margin-left:1ch; height:4ch; width:4ch; border-radius:5px; padding:4px">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
                         </div>
                         <div style="margin-left:95px">
-                            <i title="Mês Anterior" ng-click="vm.backDateL()" class="glyphicon glyphicon-circle-arrow-left" style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
-                            <button class="btn" ng-click="vm.actuaDateL()" style="color: white; background-color:rgb(255, 136, 0); margin-top:-10px; height:25px; width:127px; padding:2px; margin-right:15px; margin-left:15px; cursor:pointer">{{vm.month}}</button>                            
-                            <i title="Próximo Mês" ng-click="vm.nextDateL()" class="glyphicon glyphicon-circle-arrow-right" style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
+                            <i title="Mês Anterior" ng-click="vm.backDateL()"
+                                class="glyphicon glyphicon-circle-arrow-left"
+                                style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
+                            <button class="btn" ng-click="vm.actuaDateL()"
+                                style="color: white; background-color:rgb(255, 136, 0); margin-top:-10px; height:25px; width:127px; padding:2px; margin-right:15px; margin-left:15px; cursor:pointer">{{vm.month}}</button>
+                            <i title="Próximo Mês" ng-click="vm.nextDateL()"
+                                class="glyphicon glyphicon-circle-arrow-right"
+                                style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:1%">
                         <div class="switch__container">
                             <div class="col-lg-3">
-                                <input id="switch-shadow2" class="switch switch--shadow" ng-model="vm.credit" type="checkbox">
+                                <input id="switch-shadow2" class="switch switch--shadow" ng-model="vm.credit"
+                                    type="checkbox">
                                 <label for="switch-shadow2" style="margin-bottom:10px">
                                     <span style="margin-left:50px">Crédito</span>
                                 </label>
                             </div>
                             <div class="col-lg-3">
-                                <input id="switch-shadow3" class="switch switch--shadow" ng-model="vm.debit" type="checkbox">
+                                <input id="switch-shadow3" class="switch switch--shadow" ng-model="vm.debit"
+                                    type="checkbox">
                                 <label for="switch-shadow3">
                                     <span style="margin-left:50px">Débito</span>
                                 </label>
@@ -292,8 +337,10 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="vm.launch(c)" ng-repeat="c in accountLaunch" style="margin-bottom:5px">
-                        <div class="card-conciliation row" style="padding:15px; background-color:rgba(66, 66, 245, 0.2)" ng-if="vm.trasaction._id == c._id">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-click="vm.launch(c)"
+                        ng-repeat="c in accountLaunch" style="margin-bottom:5px">
+                        <div class="card-conciliation row" style="padding:15px; background-color:rgba(66, 66, 245, 0.2)"
+                            ng-if="vm.trasaction._id == c._id">
                             <div class="col-12">
                                 <span title="{{c.description}}" class="col-lg-4" ng-if="c.description">
                                     <b>Descrição:</b> {{c.description.substring(0,15)}}</span>
@@ -315,7 +362,8 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="card-conciliation row" style="padding:15px; cursor:pointer" ng-if="vm.trasaction._id != c._id">
+                        <div class="card-conciliation row" style="padding:15px; cursor:pointer"
+                            ng-if="vm.trasaction._id != c._id">
                             <div class="col-12">
                                 <span title="{{c.description}}" class="col-lg-4" ng-if="c.description">
                                     <b>Descrição:</b> {{c.description.substring(0,15)}}</span>
@@ -349,14 +397,17 @@
                         </spam>
                     </div>
                     <div ng-hide="assyncRequest1" class="spinner-example wrapper wrapper-content " id="spinner">
-                        <div class="sk-spinner sk-spinner-chasing-dots col-lg-6" style="margin-top:20px; margin-left:50%">
+                        <div class="sk-spinner sk-spinner-chasing-dots col-lg-6"
+                            style="margin-top:20px; margin-left:50%">
                             <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
                             <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
                         </div>
-                    </div> 
-                    <ul id="nextPages" ng-hide="visibleTableT" uib-pagination boundary-links="true" total-items="vm.totalItemsT" max-size='3' ng-model="currentPageT"
-                        ng-change="vm.nextListTransaction(currentPageT)" class="pagination-sm" rotate="false" previous-text="&lsaquo;"
-                        next-text="&rsaquo;" items-per-page="vm.itemsPerPageT" first-text="&laquo;" last-text="&raquo;" style="margin-left:60%; margin-top:0px">
+                    </div>
+                    <ul id="nextPages" ng-hide="visibleTableT" uib-pagination boundary-links="true"
+                        total-items="vm.totalItemsT" max-size='3' ng-model="currentPageT"
+                        ng-change="vm.nextListTransaction(currentPageT)" class="pagination-sm" rotate="false"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPageT"
+                        first-text="&laquo;" last-text="&raquo;" style="margin-left:60%; margin-top:0px">
                 </div>
             </div>
         </div>

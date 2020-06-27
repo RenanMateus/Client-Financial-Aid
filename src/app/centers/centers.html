@@ -1,17 +1,20 @@
 <div class="row">
     <div class="col-lg-12" style="padding-left:30px;padding-right:30px; background-color: rgba(246, 249, 252, 0.836)">
         <br>
-        <div class="row wrapper border-bottom white-bg page-heading" style="background-color: rgba(246, 249, 252, 0.836)">
+        <div class="row wrapper border-bottom white-bg page-heading"
+            style="background-color: rgba(246, 249, 252, 0.836)">
             <div class="col-lg-12" style="background-color: rgba(246, 249, 252, 0.836)">
                 <div class="row">
                     <h2 class="col-md-6">Centros de Custo / Receita</h2>
                     <br>
                     <div class="col-md-6 pull-right">
-                        <input type="button" value="Novo Centro de Custo / Receita" class="btn btn-success pull-right" ng-click="openModal('new')">
+                        <input type="button" value="Novo Centro de Custo / Receita" class="btn btn-success pull-right"
+                            ng-click="openModal('new')">
                     </div>
                     <div class="input-group col-md-6 pull-right" style="margin-top:15px">
-                        <input type="text" placeholder="Procurar Centro" ng-model="vm.searchText" ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)"
-                            class="input-sm form-control" style="background-color: rgba(246, 249, 252, 0.836)">
+                        <input type="text" placeholder="Procurar Centro" ng-model="vm.searchText"
+                            ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)" class="input-sm form-control"
+                            style="background-color: rgba(246, 249, 252, 0.836)">
                         <span class="input-group-btn">
                             <button ng-click="vm.search(vm.searchText)" type="button" class="btn btn-sm btn-success">
                                 <i class="fa fa-search"></i>
@@ -48,10 +51,12 @@
                             <td>{{c.revenue?'Sim':'Não'}}</td>
                             <td>{{c.cost?'Sim':'Não'}}</td>
                             <td>
-                                <button title="Excluir Centro" ng-click="deleteCenters(c._id)" class="pull-right btn btn-sm btn-danger" style="margin-left:5px">
+                                <button title="Excluir Centro" ng-click="deleteCenters(c._id)"
+                                    class="pull-right btn btn-sm btn-danger" style="margin-left:5px">
                                     <i class="fa fa-lg fa-trash"></i>
                                 </button>
-                                <button title="Editar Centro" ng-click="openModal(c._id)" class="pull-right btn btn-sm btn-warning" style="width:35px">
+                                <button title="Editar Centro" ng-click="openModal(c._id)"
+                                    class="pull-right btn btn-sm btn-warning" style="width:35px">
                                     <i class="fa fa-lg fa-edit"></i>
                                 </button>
                             </td>
@@ -68,16 +73,18 @@
                         <strong style="color:#a927fa">{{vm.notifyErro}}</strong>
                     </spam>
                 </div>
-                <div ng-hide="assyncRequest" class="spinner-example wrapper wrapper-content " id="spinner">
-                    <div class="sk-spinner sk-spinner-chasing-dots">
-                        <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
-                        <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
-                    </div>
+            </div>
+            <div ng-hide="assyncRequest" class="spinner-example wrapper wrapper-content " id="spinner">
+                <div class="sk-spinner sk-spinner-chasing-dots">
+                    <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
+                    <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
                 </div>
             </div>
-            <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems" max-size='3' ng-model="currentPage" ng-change="vm.nextListCenters(currentPage)"
-                class="pagination-sm" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
-                first-text="&laquo;" last-text="&raquo;" style="display: flex; align-items: center; justify-content: center">
+            <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems"
+                max-size='3' ng-model="currentPage" ng-change="vm.nextListCenters(currentPage)" class="pagination-sm"
+                rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
+                first-text="&laquo;" last-text="&raquo;"
+                style="display: flex; align-items: center; justify-content: center">
         </div>
     </div>
 </div>

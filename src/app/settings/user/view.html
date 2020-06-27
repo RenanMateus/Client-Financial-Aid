@@ -12,6 +12,7 @@
 
 <style>
     @import url(https://fonts.googleapis.com/css?family=Arimo);
+
     label[for="file-input"] {
         display: block;
         margin-bottom: 1em;
@@ -42,19 +43,24 @@
         color: #fff;
         border-radius: .2em;
     }
-    input[type="text"]{
-        background-color: rgba(246, 249, 252, 0.836);
-    }   
-    input[type="date"]{
-        background-color: rgba(246, 249, 252, 0.836);
-    }  
-    .input-group-addon{
+
+    input[type="text"] {
         background-color: rgba(246, 249, 252, 0.836);
     }
-    #btn-save{
+
+    input[type="date"] {
         background-color: rgba(246, 249, 252, 0.836);
     }
-    #btn-save:hover{
+
+    .input-group-addon {
+        background-color: rgba(246, 249, 252, 0.836);
+    }
+
+    #btn-save {
+        background-color: rgba(246, 249, 252, 0.836);
+    }
+
+    #btn-save:hover {
         background-color: rgb(74, 115, 250);
     }
 </style>
@@ -66,7 +72,8 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <!--  ADICIONAR NOVO USUÁRIO !-->
-                <form id="form2" ng-submit="vm.register(form2)" class="ibox-content" ng-if="vm.id === 'new'" style="background-color: rgba(246, 249, 252, 0.836)">
+                <form id="form2" ng-submit="vm.register(form2)" class="ibox-content" ng-if="vm.id === 'new'"
+                    style="background-color: rgba(246, 249, 252, 0.836)">
                     <div class="row">
                         <div class="col-md-12">
                             <p style="font-size:16pt"><b>Criar um novo usuário:</b></p>
@@ -79,7 +86,8 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <input type="text" placeholder="Email de login" ng-model="newUser.email" class="form-control" required>
+                                <input type="text" placeholder="Email de login" ng-model="newUser.email"
+                                    class="form-control" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -90,7 +98,8 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <input type="text" placeholder="Nome completo" ng-model="newUser.name" class="form-control">
+                                <input type="text" placeholder="Nome completo" ng-model="newUser.name"
+                                    class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -101,7 +110,8 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <input type="password" placeholder="senha" ng-model="newUser.password" class="form-control">
+                                <input type="password" placeholder="senha" ng-model="newUser.password"
+                                    class="form-control">
                             </div>
                         </div>
 
@@ -119,11 +129,10 @@
                     </div>
                 </form>
 
-                <form id="form" ng-submit="vm.register(form)" class="ibox-content" ng-if="vm.id != 'new'" style="background-color: rgba(246, 249, 252, 0.836)">
-                 <!--   <input type="button" class="btn btn-primary pull-left" value="Adicionar Usuário" ui-sref="dashboard.user_edit({id:'new'})"  
-                    />  !-->
-                    <input type="button" class="btn btn-primary pull-right" value="Mudar senha" ui-sref="dashboard.user_password({id:vm.id})"
-                    />
+                <form id="form" ng-submit="vm.register(form)" class="ibox-content" ng-if="vm.id != 'new'"
+                    style="background-color: rgba(246, 249, 252, 0.836)">
+                    <input type="button" class="btn btn-primary pull-right" value="Mudar senha"
+                        ui-sref="dashboard.user_password({id:vm.id})" />
 
                     <div class="row" style="margin-top:5%">
                         <div class="col-md-12">
@@ -137,7 +146,8 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-user"></i>
                                 </span>
-                                <input type="text" placeholder="Email de login" ng-model="vm.user.email" class="form-control" required>
+                                <input type="text" placeholder="Email de login" ng-model="vm.user.email"
+                                    class="form-control" required>
                             </div>
                         </div>
                         <div>
@@ -154,7 +164,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </span>
-                                    <input type="text" placeholder="Nome completo" ng-model="vm.user.name" class="form-control">
+                                    <input type="text" placeholder="Nome completo" ng-model="vm.user.name"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -174,9 +185,11 @@
                                 </h4>
                                 <div class="input-group m-b">
                                     <div class="btn-group col-md-12 col-sm-12 col-xs-12">
-                                        <label class="btn btn-{{vm.user.gender == 'MALE' ? 'success':'white'}}" ng-model="vm.user.gender" uib-btn-radio="'MALE'">
+                                        <label class="btn btn-{{vm.user.gender == 'MALE' ? 'success':'white'}}"
+                                            ng-model="vm.user.gender" uib-btn-radio="'MALE'">
                                             <i class="fa fa-male"></i> Masculino</label>
-                                        <label class="btn btn-{{vm.user.gender == 'FEMALE' ? 'danger':'white'}}" ng-model="vm.user.gender" uib-btn-radio="'FEMALE'">
+                                        <label class="btn btn-{{vm.user.gender == 'FEMALE' ? 'danger':'white'}}"
+                                            ng-model="vm.user.gender" uib-btn-radio="'FEMALE'">
                                             <i class="fa fa-female"></i> Feminino</label>
                                     </div>
                                 </div>
@@ -194,7 +207,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-user-o"></i>
                                     </span>
-                                    <input type="text" placeholder="CPF" mask="999.999.999-99" ng-model="vm.user.cpf" class="form-control">
+                                    <input type="text" placeholder="CPF" mask="999.999.999-99" ng-model="vm.user.cpf"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -205,7 +219,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </span>
-                                    <input type="text" placeholder="Nº Identidade" ng-model="vm.user.identityNumber" class="form-control">
+                                    <input type="text" placeholder="Nº Identidade" ng-model="vm.user.identityNumber"
+                                        class="form-control">
                                 </div>
                             </div>
 
@@ -221,8 +236,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-home"></i>
                                     </span>
-                                    <input type="text" placeholder="CEP" ng-change="vm.changeCEP(vm.user.cep)" mask="99.999-999" ng-model="vm.user.cep" class="form-control"
-                                    />
+                                    <input type="text" placeholder="CEP" ng-change="vm.changeCEP(vm.user.cep)"
+                                        mask="99.999-999" ng-model="vm.user.cep" class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -233,7 +248,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-home"></i>
                                     </span>
-                                    <input type="text" placeholder="Logradouro" ng-model="vm.user.publicPlace" class="form-control" />
+                                    <input type="text" placeholder="Logradouro" ng-model="vm.user.publicPlace"
+                                        class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -244,7 +260,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-home"></i>
                                     </span>
-                                    <input type="text" placeholder="Número" ng-model="vm.user.number" class="form-control" />
+                                    <input type="text" placeholder="Número" ng-model="vm.user.number"
+                                        class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -255,7 +272,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-home"></i>
                                     </span>
-                                    <input type="text" placeholder="Complemento" ng-model="vm.user.compl" class="form-control" />
+                                    <input type="text" placeholder="Complemento" ng-model="vm.user.compl"
+                                        class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -266,7 +284,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-home"></i>
                                     </span>
-                                    <input type="text" placeholder="Cidade" ng-model="vm.user.country" class="form-control" />
+                                    <input type="text" placeholder="Cidade" ng-model="vm.user.country"
+                                        class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -277,7 +296,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-home"></i>
                                     </span>
-                                    <select class="form-control" ng-model="vm.user.state" style="background-color: rgba(246, 249, 252, 0.836);">
+                                    <select class="form-control" ng-model="vm.user.state"
+                                        style="background-color: rgba(246, 249, 252, 0.836);">
                                         <option value="" selected disabled>Selecione um estado</option>
                                         <option value="AC">Acre</option>
                                         <option value="AL">Alagoas</option>

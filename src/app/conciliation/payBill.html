@@ -2,51 +2,22 @@
     <div class="row" style="margin-left:2%; margin-right:2%">
         <h2>Pagar Conta
             <spam class="pull-right" style="cursor:pointer">
-                <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>                
-            </spam>            
+                <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
+            </spam>
         </h2>
-        <button class="btn btn-success pull-right" ng-click="anexo()">Adicionar Anexo</button> 
-        <br>               
+        <button class="btn btn-success pull-right" ng-click="anexo()">Adicionar Anexo</button>
+        <br>
         <br>
         <form id="form" ng-submit="register(form)">
             <br>
-            <div class="row">               
+            <div class="row">
                 <div class="col-lg-3">
                     <h4>
                         <b>Valor a Pagar*</b>
                     </h4>
                     <div class="input-group m-b">
                         <span class="input-group-addon">R$</span>
-                        <input ng-model="billsExpense.value" class="form-control" disabled/>
-                    </div>
-                </div>           
-                <div class="col-lg-3">
-                    <h4>
-                        <b>Multa</b>
-                    </h4>
-                    <div class="input-group m-b">
-                        <span class="input-group-addon">
-                            <i class="fa fa-tag"></i>
-                        </span>
-                        <input type="number" ng-model="billsExpense.forfeit" class="form-control">
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <h4>
-                        <b>Juros</b>
-                    </h4>
-                    <div class="input-group m-b">
-                        <span class="input-group-addon">%</span>
-                        <input type="number" ng-model="billsExpense.interestRate" class="form-control">
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <h4>
-                        <b>Desconto</b>
-                    </h4>
-                    <div class="input-group m-b">
-                        <span class="input-group-addon">%</span>
-                        <input type="number" ng-model="billsExpense.discount" class="form-control">
+                        <input ng-model="billsExpense.value" class="form-control" disabled />
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -68,12 +39,24 @@
                         <span class="input-group-addon">
                             <i class="fa fa-money"></i>
                         </span>
-                        <input ng-model="billsExpense.total" class="form-control" required>
+                        <input ng-model="billsExpense.total" class="form-control" required ng-disabled="true">
                     </div>
                 </div>
-                        <!-- ANEXOS  !-->   
+                <div class="col-lg-6">
+                    <h4><b>Conta Bancária Pertencente</b></h4>
+                    <div class="input-group m-b">
+                        <span class="input-group-addon">
+                            <i class="fa fa-tag"></i>
+                        </span>
+                        <select class="form-control" ng-disabled="accounts.length === 0" ng-model="vm.idAccount">
+                            <option value="" selected disabled>Informe a conta bancária</option>
+                            <option ng-repeat="account in accounts" value="{{account._id}}">{{account.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- ANEXOS  !-->
                 <div class="col-lg-12" ng-if="vm.anexo">
-                        <input id="anexos-upload" type="file" nv-file-select="" uploader="vm.uploader" multiple />
+                    <input id="anexos-upload" type="file" nv-file-select="" uploader="vm.uploader" multiple />
                     <table class="table">
                         <thead>
                             <tr>
@@ -87,22 +70,19 @@
                             <tr ng-repeat="item in vm.uploader.queue">
                                 <td>
                                     <strong>{{ item.file.name }}</strong>
-                                    <!-- Image preview -->
-                                    <!--auto height-->
-                                    <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
-                                    <!--auto width-->
-                                    <div ng-show="vm.uploader.isHTML5" ng-thumb="{ file: item._file, height: 80, width:100 }"></div>
-                                    <!--fixed width and height -->
-                                    <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+                                    <div ng-show="vm.uploader.isHTML5"
+                                        ng-thumb="{ file: item._file, height: 80, width:100 }"></div>
                                 </td>
                                 <td ng-show="vm.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
                                 <td ng-show="vm.uploader.isHTML5">
                                     <div class="progress" style="margin-bottom: 0;">
-                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                        <div class="progress-bar" role="progressbar"
+                                            ng-style="{ 'width': item.progress + '%' }"></div>
                                     </div>
                                 </td>
                                 <td nowrap>
-                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"
+                                        ng-disabled="item.isReady || item.isUploading || item.isSuccess">
                                         <span class="glyphicon glyphicon-upload"></span> Enviar
                                     </button>
                                     <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
@@ -112,8 +92,8 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>                                                                                                     
-            </div>            
+                </div>
+            </div>
             <div class="row">
                 <br>
                 <br>

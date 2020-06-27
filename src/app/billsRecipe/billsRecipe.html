@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-lg-12" style="padding-left:30px;padding-right:30px; background-color: rgba(246, 249, 252, 0.836)">
         <br>
-        <div class="row wrapper border-bottom white-bg page-heading" style="background-color: rgba(246, 249, 252, 0.836)">
+        <div class="row wrapper border-bottom white-bg page-heading"
+            style="background-color: rgba(246, 249, 252, 0.836)">
             <div class="col-lg-12">
                 <div class="row" style="background-color: rgba(246, 249, 252, 0.836)">
                     <div class="col-md-6">
@@ -11,29 +12,38 @@
                         </span>
                     </div>
                     <br>
-                    <input type="button" value="Nova Conta a Receber" class="btn btn-success pull-right" ng-click="openModal('new')">
+                    <input type="button" value="Nova Conta a Receber" class="btn btn-success pull-right"
+                        ng-click="openModal('new')">
                     <div class="col-md-6" style="margin-top:10px; margin-left:-15px">
                         <spam style="margin-right:5px; font-size:12pt">
                             <strong style="font-weight:900; color:black">De</strong>
                         </spam>
-                        <input type="date" ng-model="vm.start" ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)" style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 14px;font-weight: bold;"
-                        />
+                        <input type="date" ng-model="vm.start"
+                            ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)"
+                            style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 14px;font-weight: bold;" />
                         <i class="fa fa-calendar" style="color:blue; font-size:15pt"></i>
                         <spam style="margin-right:5px;margin-left:10px; font-size:12pt">
                             <strong style="font-weight:900; color:black">Até</strong>
                         </spam>
-                        <input type="date" ng-model="vm.end" ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)" style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 14px;font-weight: bold;"
-                        />
+                        <input type="date" ng-model="vm.end"
+                            ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)"
+                            style="color:black; width:21ch; background-color: rgba(246, 249, 252, 0.836); border-width: 1px;border-color: black;font-size: 14px;font-weight: bold;" />
                         <i class="fa fa-calendar" style="color:blue; font-size:15pt"></i>
                         <div style="margin-top: 10px; margin-left:130px">
-                            <i title="Mês Anterior" ng-click="vm.backDate()" class="glyphicon glyphicon-circle-arrow-left" style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
-                            <button class="btn" ng-click="vm.actuaDate()" style="color: white; background-color:rgb(255, 136, 0); margin-top:-10px; height:25px; width:127px; padding:2px; margin-right:15px; margin-left:15px; cursor:pointer">{{vm.month}}</button>
-                            <i title="Próximo Mês" ng-click="vm.nextDate()" class="glyphicon glyphicon-circle-arrow-right" style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
+                            <i title="Mês Anterior" ng-click="vm.backDate()"
+                                class="glyphicon glyphicon-circle-arrow-left"
+                                style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
+                            <button class="btn" ng-click="vm.actuaDate()"
+                                style="color: white; background-color:rgb(255, 136, 0); margin-top:-10px; height:25px; width:127px; padding:2px; margin-right:15px; margin-left:15px; cursor:pointer">{{vm.month}}</button>
+                            <i title="Próximo Mês" ng-click="vm.nextDate()"
+                                class="glyphicon glyphicon-circle-arrow-right"
+                                style="font-size:18pt; color:rgb(255, 136, 0); cursor:pointer"></i>
                         </div>
                     </div>
                     <div class="input-group col-md-6 pull-right" style="margin-top:15px; margin-bottom:20px">
-                        <input type="text" placeholder="Procurar Conta a receber" ng-model="searchText" ng-keydown="$event.keyCode === 13 && vm.search(searchText)"
-                            class="input-sm form-control" style="background-color: rgba(246, 249, 252, 0.836)">
+                        <input type="text" placeholder="Procurar Conta a receber" ng-model="searchText"
+                            ng-keydown="$event.keyCode === 13 && vm.search(searchText)" class="input-sm form-control"
+                            style="background-color: rgba(246, 249, 252, 0.836)">
                         <span class="input-group-btn">
                             <button ng-click="vm.search(searchText)" type="button" class="btn btn-sm btn-success">
                                 <i class="fa fa-search"></i>
@@ -74,7 +84,8 @@
                         <td ng-if="c.dueDate >= vm.datehj && c.ok">{{c.dueDate | date:'dd/MM/yyyy'}}</td>
                         <td ng-if="c.dueDate >= vm.datehj && !c.ok">{{c.dueDate | date:'dd/MM/yyyy'}}</td>
                         <td ng-if="c.dueDate < vm.datehj && c.ok">{{c.dueDate | date:'dd/MM/yyyy'}}</td>
-                        <td ng-if="c.dueDate < vm.datehj && !c.ok" style="color:red">{{c.dueDate | date:'dd/MM/yyyy'}}</td>
+                        <td ng-if="c.dueDate < vm.datehj && !c.ok" style="color:red">{{c.dueDate | date:'dd/MM/yyyy'}}
+                        </td>
                         <td>{{c.value | currency:'R$'}}</td>
                         <td title="{{c.description}}" ng-if="c.description">{{c.description.substring(0,36)}}</td>
                         <td ng-if="!c.description">----</td>
@@ -85,22 +96,26 @@
                         <td ng-if="c.ok">{{c.payday | date:'dd/MM/yyyy'}}</td>
                         <td ng-if="!c.ok">----</td>
                         <td ng-if="c.ok">
-                            <i title="Conta Recebida" class="fa fa-lg fa-check" style="color:rgb(9, 199, 9)"></i> {{c.total | currency:'R$'}}</td>
+                            <i title="Conta Recebida" class="fa fa-lg fa-check" style="color:rgb(9, 199, 9)"></i>
+                            {{c.total | currency:'R$'}}</td>
                         <td ng-if="!c.ok">
                             <i title="Conta Não Recebida" class="fa fa-lg fa-warning" style="color:red"></i>
                         </td>
                         <td ng-if="c._conciliation == null">
-                            <i title="Conta Não Conciliada" class="fa fa-lg fa-warning" style="color:red; margin-left:20%">
+                            <i title="Conta Não Conciliada" class="fa fa-lg fa-warning"
+                                style="color:red; margin-left:20%">
                         </td>
                         <td ng-if="c._conciliation != null">
-                            <i title="Conta Conciliada" class="fa fa-lg fa-check" style="color:rgb(9, 199, 9); margin-left:20%">
+                            <i title="Conta Conciliada" class="fa fa-lg fa-check"
+                                style="color:rgb(9, 199, 9); margin-left:20%">
                         </td>
                         <td>
-                            <button title="Excluir Conta" ng-click="deleteBillsRecipe(c._id)" type="button" class="pull-right btn btn-sm btn-danger"
-                                style="margin-left:5px">
+                            <button title="Excluir Conta" ng-click="deleteBillsRecipe(c._id)" type="button"
+                                class="pull-right btn btn-sm btn-danger" style="margin-left:5px">
                                 <i class="fa fa-lg fa-trash"></i>
                             </button>
-                            <button title="Editar Conta" ng-click="openEdit(c._id)" type="button" class="pull-right btn btn-sm btn-warning" style="width:35px">
+                            <button title="Editar Conta" ng-click="openEdit(c._id)" type="button" ng-disabled="c.ok"
+                                class="pull-right btn btn-sm btn-warning" style="width:35px">
                                 <i class="fa fa-lg fa-edit"></i>
                             </button>
                         </td>
@@ -117,16 +132,18 @@
                     <strong style="color:#a927fa">{{vm.notifyErro}}</strong>
                 </spam>
             </div>
-            <div ng-hide="assyncRequest" class="spinner-example wrapper wrapper-content " id="spinner">
-                <div class="sk-spinner sk-spinner-chasing-dots">
-                    <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
-                    <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
-                </div>
+        </div>
+        <div ng-hide="assyncRequest" class="spinner-example wrapper wrapper-content " id="spinner">
+            <div class="sk-spinner sk-spinner-chasing-dots">
+                <div class="sk-dot1" style="background-color: rgb(1, 25, 241)"></div>
+                <div class="sk-dot2" style="background-color: rgb(1, 25, 241)"></div>
             </div>
         </div>
-        <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems" max-size='3' ng-model="currentPage" ng-change="vm.nextListBillsRecipe(currentPage)"
-            class="pagination-sm" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
-            first-text="&laquo;" last-text="&raquo;" style="display: flex; align-items: center; justify-content: center">
+        <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems"
+            max-size='3' ng-model="currentPage" ng-change="vm.nextListBillsRecipe(currentPage)" class="pagination-sm"
+            rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
+            first-text="&laquo;" last-text="&raquo;"
+            style="display: flex; align-items: center; justify-content: center">
     </div>
 </div>
 </div>

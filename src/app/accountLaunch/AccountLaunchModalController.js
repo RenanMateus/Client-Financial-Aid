@@ -92,6 +92,7 @@
             if ($scope.accountLaunch._category === "") $scope.accountLaunch._category = undefined;
             if ($scope.accountLaunch._partner === "") $scope.accountLaunch._partner = undefined;
             if ($scope.accountLaunch._center === "") $scope.accountLaunch._center = undefined;
+
             if (id == 'new') {
                 $http.post(consts.apiUrl + '/posting/' + idAccount, $scope.accountLaunch)
                     .then(function (response) {
@@ -220,7 +221,7 @@
         }
 
         $scope.openAnexo = function (id) {
-            window.open(consts.apiUrl + "/file-transaction/" + id + '?token=' + auth.getUser().token);                      
+            window.open(consts.apiUrl + "/file-transaction/" + id + '?token=' + auth.getUser().token);
         }
     }
 })();

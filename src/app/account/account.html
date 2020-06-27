@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-lg-12" style="padding-left:30px;padding-right:30px; background-color: rgba(246, 249, 252, 0.836)">
         <br>
-        <div class="row wrapper border-bottom white-bg page-heading" style="background-color: rgba(246, 249, 252, 0.836)">
+        <div class="row wrapper border-bottom white-bg page-heading"
+            style="background-color: rgba(246, 249, 252, 0.836)">
             <div class="col-lg-12" style="background-color: rgba(246, 249, 252, 0.836)">
                 <div class="row" style="background-color: rgba(246, 249, 252, 0.836)">
                     <div class="col-md-6">
@@ -12,7 +13,8 @@
                     </div>
                     <br>
                     <div class="col-md-6 pull-right">
-                        <input type="button" value="Cadastrar nova conta" class="btn btn-success pull-right" ng-click="openModal('new')">
+                        <input type="button" value="Cadastrar nova conta" class="btn btn-success pull-right"
+                            ng-click="openModal('new')">
                     </div>
                 </div>
                 <ol class="breadcrumb" style="background-color: rgba(246, 249, 252, 0.836)">
@@ -42,22 +44,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id="identify" ng-repeat="c in account" style="cursor:default; background-color: rgba(246, 249, 252, 0.836)">
+                        <tr id="identify" ng-repeat="c in account"
+                            style="cursor:default; background-color: rgba(246, 249, 252, 0.836)">
                             <td title="{{c.name}}">{{c.name.substring(0,22)}}</td>
                             <td>{{c.type}}</td>
-                            <td ng-if="c.type==='Conta Corrente'">{{c.bank}}</td>
-                            <td ng-if="c.type==='Conta Corrente'">{{c.agency}}</td>
-                            <td ng-if="c.type==='Conta Corrente'">{{c.accountNumber}}</td>
-                            <td ng-if="c.type!='Conta Corrente'">----</td>
-                            <td ng-if="c.type!='Conta Corrente'">----</td>
-                            <td ng-if="c.type!='Conta Corrente'">----</td>
+                            <td ng-if="c.type==='Conta Corrente' || c.type==='Conta Poupanca'">{{c.bank}}</td>
+                            <td ng-if="c.type==='Conta Corrente' || c.type==='Conta Poupanca'">{{c.agency}}</td>
+                            <td ng-if="c.type==='Conta Corrente' || c.type==='Conta Poupanca'">{{c.accountNumber}}</td>
+                            <td ng-if="c.type!='Conta Corrente' && c.type!='Conta Poupanca'">----</td>
+                            <td ng-if="c.type!='Conta Corrente' && c.type!='Conta Poupanca'">----</td>
+                            <td ng-if="c.type!='Conta Corrente' && c.type!='Conta Poupanca'">----</td>
                             <td>{{c.balance | currency:'R$'}}</td>
                             <td style="margin-right:70%">
-                                <button title="Inserir Lançamentos" class="btn-sm btn-default" ui-sref="dashboard.accountLaunch({id:c._id})" style="background-color: rgba(218, 235, 250, 0.925)">Lançamentos</button>
-                                <button title="Excluir Conta" ng-click="deleteAccount(c._id)" class="pull-right btn btn-sm btn-danger" style="margin-left:5px">
+                                <button title="Inserir Lançamentos" class="btn-sm btn-default"
+                                    ui-sref="dashboard.accountLaunch({id:c._id})"
+                                    style="background-color: rgba(218, 235, 250, 0.925)">Lançamentos</button>
+                                <button title="Excluir Conta" ng-click="deleteAccount(c._id)"
+                                    class="pull-right btn btn-sm btn-danger" style="margin-left:5px">
                                     <i class="fa fa-lg fa-trash"></i>
                                 </button>
-                                <button title="Editar Conta" ng-click="openModalEdit(c._id)" class="pull-right btn btn-sm btn-warning" style="width:35px">
+                                <button title="Editar Conta" ng-click="openModalEdit(c._id)"
+                                    class="pull-right btn btn-sm btn-warning" style="width:35px">
                                     <i class="fa fa-lg fa-edit"></i>
                                 </button>
                             </td>
@@ -76,9 +83,11 @@
                     </div>
                 </div>
             </div>
-            <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems" max-size='3' ng-model="currentPage" ng-change="vm.nextListAccount(currentPage)"
-                class="pagination-sm" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
-                first-text="&laquo;" last-text="&raquo;" style="display: flex; align-items: center; justify-content: center">
+            <ul id="nextPages" ng-hide="visibleTable" uib-pagination boundary-links="true" total-items="vm.totalItems"
+                max-size='3' ng-model="currentPage" ng-change="vm.nextListAccount(currentPage)" class="pagination-sm"
+                rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="vm.itemsPerPage"
+                first-text="&laquo;" last-text="&raquo;"
+                style="display: flex; align-items: center; justify-content: center">
         </div>
     </div>
 </div>

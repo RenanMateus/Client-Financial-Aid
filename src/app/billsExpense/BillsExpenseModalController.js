@@ -14,13 +14,32 @@
         $scope.billsExpense = {
             credit: false,
             ok: false,
-            type : 'Normal',
+            type: 'Normal',
             dueDate: new Date(),
-            payday: new Date()           
+            payday: new Date()
         };
         $scope.categories = {};
         $scope.providerPartners = {};
         $scope.centerCost = {};
+        $scope.accounts = {};
+        vm.accountLaunch = {
+            credit: false,
+            value: 0,
+            description: '',
+            date: new Date(),
+            docNumber: '',
+            _account: undefined,
+            _category: undefined,
+            _partner: undefined,
+            _center: undefined
+        }
+        vm.idAccount = null;
+
+        $http.get(consts.apiUrl + '/accounts/')
+            .then(function (response) {
+                $scope.accounts = response.data.result;
+            }).catch(function (error) {
+            });
 
         $http.get(consts.apiUrl + '/cost-center/')
             .then(function (response) {
@@ -34,7 +53,7 @@
             }).catch(function (error) {
             });
 
-        $http.get(consts.apiUrl + '/get-categories/' + page, { params: { limit} })
+        $http.get(consts.apiUrl + '/get-categories/' + page, { params: { limit } })
             .then(function (response) {
                 $scope.categories = response.data.result;
                 vm.pages = response.data.pages;
@@ -86,6 +105,10 @@
         }
 
         $scope.register = function (form) {
+            if ($scope.billsExpense._category === '') $scope.billsExpense._category = undefined;
+            if ($scope.billsExpense._partner === '') $scope.billsExpense._partner = undefined;
+            if ($scope.billsExpense._center === '') $scope.billsExpense._center = undefined;
+
             if (id == 'new') {
                 $scope.billsExpense.value = parseFloat($scope.billsExpense.value);
                 if ($scope.billsExpense.total) {
@@ -94,17 +117,51 @@
                 $http.post(consts.apiUrl + '/bill/', $scope.billsExpense)
                     .then(function (response) {
                         msgs.addSuccess("Despesa criada com sucesso!");
+
+                        if ($scope.billsExpense.ok) {
+                            vm.accountLaunch.value = $scope.billsExpense.value;
+                            vm.accountLaunch.description = $scope.billsExpense.description;
+                            vm.accountLaunch.date = $scope.billsExpense.dueDate;
+                            vm.accountLaunch.docNumber = $scope.billsExpense.docNumber;
+                            vm.accountLaunch._account = vm.idAccount;
+                            vm.accountLaunch._category = $scope.billsExpense._category;
+                            vm.accountLaunch._partner = $scope.billsExpense._partner;
+                            vm.accountLaunch._center = $scope.billsExpense._center;
+                            $http.post(consts.apiUrl + '/posting/' + vm.idAccount, vm.accountLaunch)
+                                .then(function (response) {
+                                    $uibModalInstance.dismiss();
+                                }).catch(function (error) {
+                                    msgs.addError("Erro ao criar o lançamento bancário");
+                                });
+                        }
                         $uibModalInstance.dismiss();
                     }).catch(function (error) {
-                        msgs.addError("Despesa já existente");
+                        msgs.addError("Erro interno no servidor");
                     });
-            } else {               
+            } else {
                 $http.put(consts.apiUrl + '/bill/' + id, $scope.billsExpense)
                     .then(function (response) {
                         msgs.addSuccess("Despesa atualizada com sucesso!");
+
+                        if ($scope.billsExpense.ok) {
+                            vm.accountLaunch.value = $scope.billsExpense.value;
+                            vm.accountLaunch.description = $scope.billsExpense.description;
+                            vm.accountLaunch.date = $scope.billsExpense.dueDate;
+                            vm.accountLaunch.docNumber = $scope.billsExpense.docNumber;
+                            vm.accountLaunch._account = vm.idAccount;
+                            vm.accountLaunch._category = $scope.billsExpense._category;
+                            vm.accountLaunch._partner = $scope.billsExpense._partner;
+                            vm.accountLaunch._center = $scope.billsExpense._center;
+                            $http.post(consts.apiUrl + '/posting/' + vm.idAccount, vm.accountLaunch)
+                                .then(function (response) {
+                                    $uibModalInstance.dismiss();
+                                }).catch(function (error) {
+                                    msgs.addError("Erro ao criar o lançamento bancário");
+                                });
+                        }
                         $uibModalInstance.dismiss();
                     }).catch(function (error) {
-                        msgs.addError("Despesa já existente");
+                        msgs.addError("Erro interno no servidor");
                     });
             }
         };

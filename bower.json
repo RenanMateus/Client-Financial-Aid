@@ -1,6 +1,6 @@
 {
-  "name": "Financial-Intelligence",
-  "description": "Sistema de gerenciamento cliníco",
+  "name": "Financial-Aid",
+  "description": "Sistema de auxilio financeiro",
   "main": "index.js",
   "authors": [
     "Renan Mateus < Renan Softwares >"

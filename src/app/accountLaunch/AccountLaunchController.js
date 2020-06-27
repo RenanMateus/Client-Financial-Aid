@@ -16,34 +16,36 @@
         vm.datehj = new Date();
         vm.end = new Date(vm.datehj.getFullYear(), (vm.datehj.getMonth() + 1), 1);
         vm.end.setDate(vm.end.getDate() - 1);
+        vm.end.setHours(23, 59);
         vm.start = new Date(vm.datehj.getFullYear(), vm.datehj.getMonth(), 1);
+        vm.start.setHours(0);
         vm.idAccount = $stateParams.id;
 
         // Pegar o mês e ano atual
-        if ( (new Date().getMonth() + 1) == 1 ) {
-            vm.month = ('Janeiro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 2 ){
-            vm.month = ('Fevereiro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 3 ){
-            vm.month = ('Março de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 4 ){
-            vm.month = ('Abril de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 5 ){
-            vm.month = ('Maio de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 6 ){
-            vm.month = ('Junho de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 7 ){
-            vm.month = ('Julho de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 8 ){
-            vm.month = ('Agosto de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 9 ){
-            vm.month = ('Setembro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 10 ){
-            vm.month = ('Outubro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 11 ){
-            vm.month = ('Novembro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 12 ){
-            vm.month = ('Dezembro de ' + new Date().getFullYear() );
+        if ((new Date().getMonth() + 1) == 1) {
+            vm.month = ('Janeiro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 2) {
+            vm.month = ('Fevereiro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 3) {
+            vm.month = ('Março de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 4) {
+            vm.month = ('Abril de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 5) {
+            vm.month = ('Maio de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 6) {
+            vm.month = ('Junho de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 7) {
+            vm.month = ('Julho de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 8) {
+            vm.month = ('Agosto de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 9) {
+            vm.month = ('Setembro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 10) {
+            vm.month = ('Outubro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 11) {
+            vm.month = ('Novembro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 12) {
+            vm.month = ('Dezembro de ' + new Date().getFullYear());
         }
 
         vm.nextDate = function () {
@@ -52,6 +54,11 @@
             vm.end = new Date(vm.end.getFullYear(), (vm.end.getMonth() + 2), 1);
             vm.end.setDate(vm.end.getDate() - 1);
             vm.start = new Date(vm.start.getFullYear(), (vm.start.getMonth() + 1), 1);
+            vm.end.setHours(23);
+            vm.end.setMinutes(59);
+            vm.start.setHours(0);
+            vm.start.setMinutes(0);
+
             $scope.assyncRequest = false;
             $scope.visibleTable = false;
             $http.get(consts.apiUrl + '/posting-search/' + page, { params: { text: searchText, start: vm.start, end: vm.end, _account: vm.idAccount } })
@@ -83,6 +90,11 @@
             vm.end = new Date(vm.end.getFullYear(), (vm.end.getMonth()), 1);
             vm.end.setDate(vm.end.getDate() - 1);
             vm.start = new Date(vm.start.getFullYear(), (vm.start.getMonth() - 1), 1);
+            vm.end.setHours(23);
+            vm.end.setMinutes(59);
+            vm.start.setHours(0);
+            vm.start.setMinutes(0);
+
             $scope.assyncRequest = false;
             $scope.visibleTable = false;
             $http.get(consts.apiUrl + '/posting-search/' + page, { params: { text: searchText, start: vm.start, end: vm.end, _account: vm.idAccount } })
@@ -115,6 +127,11 @@
             vm.end = new Date(vm.datehj.getFullYear(), (vm.datehj.getMonth() + 1), 1);
             vm.end.setDate(vm.end.getDate() - 1);
             vm.start = new Date(vm.datehj.getFullYear(), vm.datehj.getMonth(), 1);
+            vm.end.setHours(23);
+            vm.end.setMinutes(59);
+            vm.start.setHours(0);
+            vm.start.setMinutes(0);
+
             $scope.assyncRequest = false;
             $scope.visibleTable = false;
             $http.get(consts.apiUrl + '/posting-search/' + page, { params: { text: searchText, start: vm.start, end: vm.end, _account: vm.idAccount } })
@@ -145,6 +162,11 @@
             if (vm.idAccount === 'id') {
                 $state.go("dashboard.account");
             } else {
+                vm.end.setHours(23);
+                vm.end.setMinutes(59);
+                vm.start.setHours(0);
+                vm.start.setMinutes(0);
+
                 $scope.assyncRequest = false;
                 $scope.visibleTable = false;
                 $http.get(consts.apiUrl + '/posting-search/' + page, { params: { text: searchText, start: vm.start, end: vm.end, _account: vm.idAccount } })
@@ -204,6 +226,11 @@
         vm.search = function (searchText) {
             $scope.assyncRequest = false;
             $scope.visibleTable = false;
+            vm.end.setHours(23);
+            vm.end.setMinutes(59);
+            vm.start.setHours(0);
+            vm.start.setMinutes(0);
+
             $http.get(consts.apiUrl + '/posting-search/' + page, { params: { text: searchText, start: vm.start, end: vm.end, _account: vm.idAccount } })
                 .then(function (response) {
                     vm.credit = 0;
@@ -269,14 +296,14 @@
                 backdropClass: 'fade',
                 size: 'md',
                 resolve: {
-                    id: function() {
+                    id: function () {
                         return (id);
                     }
                 }
             });
             modalInstance.result.then(function (result) {
-            }, function () {                
-                $scope.init();                
+            }, function () {
+                $scope.init();
             });
         }
     }

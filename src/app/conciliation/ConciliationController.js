@@ -24,39 +24,46 @@
         vm.debit = false;
 
         vm.datehj = new Date();
+
         vm.endB = new Date(vm.datehj.getFullYear(), (vm.datehj.getMonth() + 1), 1);
         vm.endB.setDate(vm.endB.getDate() - 1);
+        vm.endB.setHours(23, 59);
+
         vm.startB = new Date(vm.datehj.getFullYear(), vm.datehj.getMonth(), 1);
+        vm.startB.setHours(0);
+
         vm.endL = new Date(vm.datehj.getFullYear(), (vm.datehj.getMonth() + 1), 1);
         vm.endL.setDate(vm.endL.getDate() - 1);
-        vm.startL = new Date(vm.datehj.getFullYear(), vm.datehj.getMonth(), 1);
+        vm.endL.setHours(23, 59);
 
+        vm.startL = new Date(vm.datehj.getFullYear(), vm.datehj.getMonth(), 1);
+        vm.startL.setHours(0);
 
         // Pegar o mês e ano atual
-        if ( (new Date().getMonth() + 1) == 1 ) {
-            vm.month = ('Janeiro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 2 ){
-            vm.month = ('Fevereiro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 3 ){
-            vm.month = ('Março de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 4 ){
-            vm.month = ('Abril de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 5 ){
-            vm.month = ('Maio de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 6 ){
-            vm.month = ('Junho de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 7 ){
-            vm.month = ('Julho de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 8 ){
-            vm.month = ('Agosto de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 9 ){
-            vm.month = ('Setembro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 10 ){
-            vm.month = ('Outubro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 11 ){
-            vm.month = ('Novembro de ' + new Date().getFullYear() );
-        } else if ((new Date().getMonth() + 1) == 12 ){
-            vm.month = ('Dezembro de ' + new Date().getFullYear() );
+        if ((new Date().getMonth() + 1) == 1) {
+            vm.month = ('Janeiro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 2) {
+            vm.month = ('Fevereiro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 3) {
+            vm.month = ('Março de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 4) {
+            vm.month = ('Abril de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 5) {
+            vm.month = ('Maio de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 6) {
+            vm.month = ('Junho de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 7) {
+            vm.month = ('Julho de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 8) {
+            vm.month = ('Agosto de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 9) {
+            vm.month = ('Setembro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 10) {
+            vm.month = ('Outubro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 11) {
+            vm.month = ('Novembro de ' + new Date().getFullYear());
+        } else if ((new Date().getMonth() + 1) == 12) {
+            vm.month = ('Dezembro de ' + new Date().getFullYear());
         }
 
         //  ### FUNÇÕES PARA MUDAR AS DATAS DOS LANÇAMENTOS ###
@@ -65,6 +72,11 @@
             vm.endL = new Date(vm.endL.getFullYear(), (vm.endL.getMonth() + 2), 1);
             vm.endL.setDate(vm.endL.getDate() - 1);
             vm.startL = new Date(vm.startL.getFullYear(), (vm.startL.getMonth() + 1), 1);
+            vm.endL.setHours(23);
+            vm.endL.setMinutes(59);
+            vm.startL.setHours(0);
+            vm.startL.setMinutes(0);
+
             //  PEGA TODOS OS LANÇAMENTOS, SE O CREDITO E DEBITO ESTÃO MARCADOS OU DESMARCADOS
             if ((!vm.credit && !vm.debit) || (vm.credit && vm.debit)) {
                 $scope.assyncRequest1 = false;
@@ -137,6 +149,11 @@
             vm.endL = new Date(vm.endL.getFullYear(), (vm.endL.getMonth()), 1);
             vm.endL.setDate(vm.endL.getDate() - 1);
             vm.startL = new Date(vm.startL.getFullYear(), (vm.startL.getMonth() - 1), 1);
+            vm.endL.setHours(23);
+            vm.endL.setMinutes(59);
+            vm.startL.setHours(0);
+            vm.startL.setMinutes(0);
+
             //  PEGA TODOS OS LANÇAMENTOS, SE O CREDITO E DEBITO ESTÃO MARCADOS OU DESMARCADOS
             if ((!vm.credit && !vm.debit) || (vm.credit && vm.debit)) {
                 $scope.assyncRequest1 = false;
@@ -209,6 +226,11 @@
             vm.endL = new Date(vm.datehj.getFullYear(), (vm.datehj.getMonth() + 1), 1);
             vm.endL.setDate(vm.endL.getDate() - 1);
             vm.startL = new Date(vm.datehj.getFullYear(), vm.datehj.getMonth(), 1);
+            vm.endL.setHours(23);
+            vm.endL.setMinutes(59);
+            vm.startL.setHours(0);
+            vm.startL.setMinutes(0);
+
             //  PEGA TODOS OS LANÇAMENTOS, SE O CREDITO E DEBITO ESTÃO MARCADOS OU DESMARCADOS
             if ((!vm.credit && !vm.debit) || (vm.credit && vm.debit)) {
                 $scope.assyncRequest1 = false;
@@ -283,8 +305,13 @@
             vm.endB = new Date(vm.endB.getFullYear(), (vm.endB.getMonth() + 2), 1);
             vm.endB.setDate(vm.endB.getDate() - 1);
             vm.startB = new Date(vm.startB.getFullYear(), (vm.startB.getMonth() + 1), 1);
-             //  PEGA TODAS AS CONTAS, SE A PAGAR E A RECEBER ESTÃO MARCADOS OU DESMARCADOS
-             if ((!vm.billRecipe && !vm.billExpense) || (vm.billRecipe && vm.billExpense)) {
+            vm.endB.setHours(23);
+            vm.endB.setMinutes(59);
+            vm.startB.setHours(0);
+            vm.startB.setMinutes(0);
+
+            //  PEGA TODAS AS CONTAS, SE A PAGAR E A RECEBER ESTÃO MARCADOS OU DESMARCADOS
+            if ((!vm.billRecipe && !vm.billExpense) || (vm.billRecipe && vm.billExpense)) {
                 $scope.assyncRequest = false;
                 $scope.visibleTable = false;
                 $http.get(consts.apiUrl + '/bill-search/' + page, { params: { text: searchTextB, start: vm.startB, end: vm.endB, limit: limit, conciliation: true } })
@@ -350,11 +377,16 @@
                     });
             }
         };
-        
+
         vm.backDateB = function () {
             vm.endB = new Date(vm.endB.getFullYear(), (vm.endB.getMonth()), 1);
             vm.endB.setDate(vm.endB.getDate() - 1);
             vm.startB = new Date(vm.startB.getFullYear(), (vm.startB.getMonth() - 1), 1);
+            vm.endB.setHours(23);
+            vm.endB.setMinutes(59);
+            vm.startB.setHours(0);
+            vm.startB.setMinutes(0);
+
             //  PEGA TODAS AS CONTAS, SE A PAGAR E A RECEBER ESTÃO MARCADOS OU DESMARCADOS
             if ((!vm.billRecipe && !vm.billExpense) || (vm.billRecipe && vm.billExpense)) {
                 $scope.assyncRequest = false;
@@ -427,6 +459,11 @@
             vm.endB = new Date(vm.datehj.getFullYear(), (vm.datehj.getMonth() + 1), 1);
             vm.endB.setDate(vm.endB.getDate() - 1);
             vm.startB = new Date(vm.datehj.getFullYear(), vm.datehj.getMonth(), 1);
+            vm.endB.setHours(23);
+            vm.endB.setMinutes(59);
+            vm.startB.setHours(0);
+            vm.startB.setMinutes(0);
+
             //  PEGA TODAS AS CONTAS, SE A PAGAR E A RECEBER ESTÃO MARCADOS OU DESMARCADOS
             if ((!vm.billRecipe && !vm.billExpense) || (vm.billRecipe && vm.billExpense)) {
                 $scope.assyncRequest = false;
@@ -498,6 +535,16 @@
 
 
         $scope.init = function () {
+            vm.endB.setHours(23);
+            vm.endB.setMinutes(59);
+            vm.startB.setHours(0);
+            vm.startB.setMinutes(0);
+
+            vm.endL.setHours(23);
+            vm.endL.setMinutes(59);
+            vm.startL.setHours(0);
+            vm.startL.setMinutes(0);
+
             if (!vm.billRecipe && !vm.billExpense) {
                 $scope.assyncRequest = false;
                 $scope.visibleTable = false;
@@ -507,7 +554,7 @@
                         vm.pages = response.data.pages;
                         vm.totalItemsB = response.data.total;
                         vm.itemsPerPageB = 10;
-                        if(vm.totalItemsB == 0) {
+                        if (vm.totalItemsB == 0) {
                             vm.notifyErro == "Não há Contas entre essas datas!";
                             $scope.visibleTable = true;
                         };
@@ -529,7 +576,7 @@
                         vm.pages = response.data.pages;
                         vm.totalItemsT = response.data.total;
                         vm.itemsPerPageT = 10;
-                        if(vm.totalItemsT == 0) {
+                        if (vm.totalItemsT == 0) {
                             vm.notifyErro1 = "Não há Transações entre essas datas!";
                             $scope.visibleTableT = true;
                         };
@@ -546,6 +593,11 @@
         $scope.init();
 
         vm.searchL = function (searchTextL) {
+            vm.endL.setHours(23);
+            vm.endL.setMinutes(59);
+            vm.startL.setHours(0);
+            vm.startL.setMinutes(0);
+
             //  PEGA TODOS OS LANÇAMENTOS, SE O CREDITO E DEBITO ESTÃO MARCADOS OU DESMARCADOS
             if ((!vm.credit && !vm.debit) || (vm.credit && vm.debit)) {
                 $scope.assyncRequest1 = false;
@@ -617,6 +669,11 @@
 
         //  PESQUISAS DE CONTAS
         vm.searchB = function (searchTextB) {
+            vm.endB.setHours(23);
+            vm.endB.setMinutes(59);
+            vm.startB.setHours(0);
+            vm.startB.setMinutes(0);
+
             //  PEGA TODAS AS CONTAS, SE A PAGAR E A RECEBER ESTÃO MARCADOS OU DESMARCADOS
             if ((!vm.billRecipe && !vm.billExpense) || (vm.billRecipe && vm.billExpense)) {
                 $scope.assyncRequest = false;
@@ -697,6 +754,11 @@
         vm.nextListTransaction = function (currentPageT) {
             page = currentPageT;
 
+            vm.endL.setHours(23);
+            vm.endL.setMinutes(59);
+            vm.startL.setHours(0);
+            vm.startL.setMinutes(0);
+
             if ((!vm.credit && !vm.debit) || (vm.credit && vm.debit)) {
                 $http.get(consts.apiUrl + '/posting-search/' + page, { params: { text: searchTextL, start: vm.startL, end: vm.endL, limit: limit, conciliation: true } })
                     .then(function (response) {
@@ -736,6 +798,11 @@
 
         vm.nextListBills = function (currentPageB) {
             page = currentPageB;
+
+            vm.endB.setHours(23);
+            vm.endB.setMinutes(59);
+            vm.startB.setHours(0);
+            vm.startB.setMinutes(0);
 
             if ((!vm.billRecipe && !vm.billExpense) || (vm.billRecipe && vm.billExpense)) {
                 $http.get(consts.apiUrl + '/bill-search/' + page, { params: { text: searchTextB, start: vm.startB, end: vm.endB, limit: limit, conciliation: true } })
@@ -833,7 +900,6 @@
                         $http.post(consts.apiUrl + '/conciliation', { _transaction: idLaunchConciliation, _bill: idBillConciliation })
                             .then(function (response) {
                                 msgs.addSuccess("Conciliação realizada com sucesso!");
-                                // $scope.init();
                                 vm.searchB(searchTextB);
                                 vm.searchL(searchTextL);
                             }).catch(function (error) {
