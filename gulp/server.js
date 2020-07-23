@@ -26,6 +26,7 @@ gulp.task('server', ['watch'],  ()=>{
         open: true, 
         server: {
             baseDir: 'public'
-        }
+        },
+        port: '8080'
     });
 })

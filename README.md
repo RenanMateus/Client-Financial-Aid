@@ -4,11 +4,11 @@ Este README descreve os passos necessários para execução do front-end do FINA
 
 ### Passos para instalação e rodar para teste ###
 
-* Instale o Gulp
+* Instale o Gulp [npm install gulp]
 * instale as depêndencias com o comando "npm install"
 * execute com o comando "gulp start"
 
-### Atualizando o servidor ###
+### Atualizando o projeto ###
 
 * navegue até o diretório client-web
 * Dê um git pull
