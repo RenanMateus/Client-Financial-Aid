@@ -848,7 +848,7 @@
                 controller: 'PayBillController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {
@@ -872,7 +872,7 @@
                 controller: 'RecipeBillController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {
@@ -902,35 +902,40 @@
                                 msgs.addSuccess("Conciliação realizada com sucesso!");
                                 vm.searchB(searchTextB);
                                 vm.searchL(searchTextL);
+
+                                $scope.accountLaunch.value = parseFloat($scope.accountLaunch.value);
+                                if (vm.bills._category)
+                                    vm.trasaction._category = vm.bills._category;
+                                if (vm.bills._partner)
+                                    vm.trasaction._partner = vm.bills._partner;
+                                if (vm.bills._center)
+                                    vm.trasaction._center = vm.bills._center;
+
+                                if (vm.trasaction._category && !vm.bills._category)
+                                    vm.bills._category = vm.trasaction._category;
+                                if (vm.trasaction._partner && !vm.bills._partner)
+                                    vm.bills._partner = vm.trasaction._partner;
+                                if (vm.trasaction._center && !vm.bills._center)
+                                    vm.bills._center = vm.trasaction._center;
+
+                                setTimeout(() => {
+                                    $http.put(consts.apiUrl + '/bill/' + vm.bills._id, vm.bills)
+                                        .then(function (response) {
+                                            $uibModalInstance.dismiss();
+
+                                            $http.put(consts.apiUrl + '/posting/' + vm.trasaction._account._id + '/' + vm.trasaction._id, vm.trasaction)
+                                                .then(function (response) {
+                                                    $uibModalInstance.dismiss();
+                                                }).catch(function (error) {
+                                                });
+
+                                        }).catch(function (error) {
+                                        });
+                                }, 1500);
+
                             }).catch(function (error) {
                                 msgs.addError("Erro interno do servidor, por favor, contate o suporte.");
                             });
-                        $scope.accountLaunch.value = parseFloat($scope.accountLaunch.value);
-                        if (vm.bills._category)
-                            vm.trasaction._category = vm.bills._category;
-                        if (vm.bills._partner)
-                            vm.trasaction._partner = vm.bills._partner;
-                        if (vm.bills._center)
-                            vm.trasaction._center = vm.bills._center;
-
-                        if (vm.trasaction._category && !vm.bills._category)
-                            vm.bills._category = vm.trasaction._category;
-                        if (vm.trasaction._partner && !vm.bills._partner)
-                            vm.bills._partner = vm.trasaction._partner;
-                        if (vm.trasaction._center && !vm.bills._center)
-                            vm.bills._center = vm.trasaction._center;
-
-                        $http.put(consts.apiUrl + '/posting/' + vm.trasaction._account._id + '/' + vm.trasaction._id, vm.trasaction)
-                            .then(function (response) {
-                                $uibModalInstance.dismiss();
-                            }).catch(function (error) {
-                            });
-                        $http.put(consts.apiUrl + '/bill/' + vm.bills._id, vm.bills)
-                            .then(function (response) {
-                                $uibModalInstance.dismiss();
-                            }).catch(function (error) {
-                            });
-
                     } else { msgs.addError("Valor da transação diferente do valor da conta"); }
                 } else { msgs.addError("Tipo de conta diferente do tipo de transação"); }
             } else { msgs.addError("Conta não paga ou não recebida"); }
@@ -944,7 +949,7 @@
                     controller: 'BillsRecipeModalController',
                     controllerAs: 'vm',
                     windowClass: '',
-                    backdrop: true,
+                    backdrop: 'static',
                     backdropClass: 'fade',
                     size: 'lg',
                     resolve: {

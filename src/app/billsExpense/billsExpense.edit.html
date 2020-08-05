@@ -11,14 +11,18 @@
         <form id="form" ng-submit="register(form)">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4><b>Tipo de Conta*</b></h4>
                     <div class="btn-group">
                         <label class="btn btn-{{billsExpense.type === 'Normal' ? 'success':'white'}}"
-                            ng-model="billsExpense.type" uib-btn-radio="'Normal'" value="Normal">Normal</label>
+                            ng-disabled="contaPaga" ng-model="billsExpense.type" uib-btn-radio="'Normal'"
+                            value="Normal">Normal</label>
                         <label class="btn btn-{{billsExpense.type === 'Recorrente' ? 'primary':'white'}}"
-                            ng-model="billsExpense.type" uib-btn-radio="'Recorrente'" value="Recorrente">Recorrente
+                            ng-disabled="contaPaga" ng-model="billsExpense.type" uib-btn-radio="'Recorrente'"
+                            value="Recorrente">Recorrente
                         </label>
                         <label class="btn btn-{{billsExpense.type === 'Parcelada' ? 'danger':'white'}}"
-                            ng-model="billsExpense.type" uib-btn-radio="'Parcelada'" value="Parcelada">Parcelada</label>
+                            ng-disabled="contaPaga" ng-model="billsExpense.type" uib-btn-radio="'Parcelada'"
+                            value="Parcelada">Parcelada</label>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -27,7 +31,8 @@
                     </h4>
                     <div class="input-group m-b">
                         <span class="input-group-addon">R$</span>
-                        <input id="value" ng-model="billsExpense.value" class="form-control" required />
+                        <input id="value" ng-model="billsExpense.value" class="form-control" ng-disabled="contaPaga"
+                            required />
                     </div>
                 </div>
                 <div class="col-lg-2">
@@ -36,7 +41,7 @@
                     </h4>
                     <div class="switch__container">
                         <input id="switch-shadow" class="switch switch--shadow" ng-model="billsExpense.ok"
-                            type="checkbox">
+                            ng-disabled="contaPaga" type="checkbox">
                         <label for="switch-shadow"></label>
                     </div>
                 </div>
@@ -49,7 +54,7 @@
                             <i class="fa fa-tag"></i>
                         </span>
                         <input type="text" placeholder="Descrição" ng-model="billsExpense.description"
-                            class="form-control">
+                            ng-disabled="contaPaga" class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -60,7 +65,7 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="date" ng-model="billsExpense.dueDate" class="form-control">
+                        <input type="date" ng-model="billsExpense.dueDate" class="form-control" ng-disabled="contaPaga">
                     </div>
                 </div>
                 <div ng-if="billsExpense.type ==='Parcelada'" class="col-lg-4">
@@ -71,7 +76,8 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="number" ng-model="billsExpense.installmentTotal" class="form-control" ng-disabled="true" required>
+                        <input type="number" ng-model="billsExpense.installmentTotal" class="form-control"
+                            ng-disabled="contaPaga" ng-disabled="true" required>
                     </div>
                 </div>
                 <div ng-if="billsExpense.ok" class="col-lg-4">
@@ -82,7 +88,8 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="date" ng-model="billsExpense.payday" class="form-control" required>
+                        <input type="date" ng-model="billsExpense.payday" class="form-control" required
+                            ng-disabled="contaPaga">
                     </div>
                 </div>
                 <div ng-if="billsExpense.ok" class="col-lg-4">
@@ -108,7 +115,7 @@
                         <input type="" placeholder="Categoria" autocomplete="off"
                             uib-typeahead="p as p.name  for p in categories | filter:$viewValue | limitTo:15"
                             ng-model="billsExpense._category" typeahead-no-results='noResults' class="form-control"
-                            ng-disabled="categories.length === 0">
+                            ng-disabled="categories.length === 0 || contaPaga">
                     </div>
                 </div>
                 <div ng-if="billsExpense.type !='Parcelada'" class="col-lg-4">
@@ -119,7 +126,8 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="text" ng-model="billsExpense.docNumber" class="form-control">
+                        <input type="text" ng-model="billsExpense.docNumber" class="form-control"
+                            ng-disabled="contaPaga">
                     </div>
                 </div>
                 <div ng-if="billsExpense.type ==='Parcelada'" class="col-lg-6">
@@ -130,7 +138,8 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="text" ng-model="billsExpense.docNumber" class="form-control">
+                        <input type="text" ng-model="billsExpense.docNumber" class="form-control"
+                            ng-disabled="contaPaga">
                     </div>
                 </div>
                 <div ng-if="billsExpense.ok" class="col-lg-4">
@@ -141,7 +150,7 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="date" ng-model="billsExpense.docDate" class="form-control">
+                        <input type="date" ng-model="billsExpense.docDate" class="form-control" ng-disabled="contaPaga">
                     </div>
                 </div>
                 <div ng-if="!billsExpense.ok" class="col-lg-6">
@@ -152,7 +161,7 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="date" ng-model="billsExpense.docDate" class="form-control">
+                        <input type="date" ng-model="billsExpense.docDate" class="form-control" ng-disabled="contaPaga">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -165,7 +174,7 @@
                             <i class="fa fa-tag"></i>
                         </span>
                         <input type="" placeholder="Fornecedor" autocomplete="off"
-                            ng-disabled="providerPartners.length === 0"
+                            ng-disabled="providerPartners.length === 0 || contaPaga"
                             uib-typeahead="p as p.name  for p in providerPartners | filter:$viewValue | limitTo:15"
                             ng-model="billsExpense._partner" typeahead-no-results='noResults' class="form-control">
                     </div>
@@ -180,18 +189,19 @@
                             <i class="fa fa-tag"></i>
                         </span>
                         <input type="" placeholder="Centro de Custo" autocomplete="off"
-                            ng-disabled="centerCost.length === 0"
+                            ng-disabled="centerCost.length === 0 || contaPaga"
                             uib-typeahead="p as p.name  for p in centerCost | filter:$viewValue | limitTo:15"
                             ng-model="billsExpense._center" typeahead-no-results='noResults' class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-6" ng-if="billsExpense.ok">
-                    <h4><b>Conta Bancária Pertencente</b></h4>
+                    <h4><b>Conta Bancária Pertencente*</b></h4>
                     <div class="input-group m-b">
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <select class="form-control" ng-disabled="accounts.length === 0" ng-model="vm.idAccount">
+                        <select class="form-control" ng-disabled="accounts.length === 0 || contaPaga"
+                            ng-model="vm.idAccount" required>
                             <option value="" selected disabled>Informe a conta bancária</option>
                             <option ng-repeat="account in accounts" value="{{account._id}}">{{account.name}}</option>
                         </select>
@@ -206,7 +216,7 @@
                             <i class="fa fa-tag"></i>
                         </span>
                         <textarea class="form-control" placeholder="Digite aqui as observações" cols="40" rows="6"
-                            ng-model="billsExpense.observation"></textarea>
+                            ng-disabled="contaPaga" ng-model="billsExpense.observation"></textarea>
                     </div>
                 </div>
                 <div class="col-lg-12" ng-if="vm.anexos">
@@ -247,7 +257,7 @@
                                     <td ng-if="!conciliation.transaction.description">
                                         <strong>Descrição: </strong>-----</td>
                                     <td>
-                                        <strong>Tipo: </strong>Débito</td>
+                                        <strong>Tipo: </strong>Saída</td>
                                     <td>
                                         <strong>Valor: </strong>{{'R$' + conciliation.transaction.value}}</td>
                                     <td>

@@ -118,7 +118,7 @@
                 controller: 'CategoriesModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {
@@ -140,7 +140,7 @@
                 controller: 'CategoriesModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {
@@ -163,7 +163,7 @@
                 controller: 'CategoriesSubModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {
@@ -189,7 +189,7 @@
                 controller: 'CategoriesSubModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {

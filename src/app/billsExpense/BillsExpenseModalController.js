@@ -19,7 +19,7 @@
             payday: new Date()
         };
         $scope.categories = {};
-        $scope.providerPartners = {};
+        $scope.providerPartners = [];
         $scope.centerCost = {};
         $scope.accounts = {};
         vm.accountLaunch = {
@@ -34,6 +34,7 @@
             _center: undefined
         }
         vm.idAccount = null;
+        $scope.contaPaga = false;
 
         $http.get(consts.apiUrl + '/accounts/')
             .then(function (response) {
@@ -87,6 +88,8 @@
                         $scope.billsExpense.docDate = new Date($scope.billsExpense.docDate);
                     if ($scope.billsExpense.month)
                         $scope.billsExpense.month = new Date($scope.billsExpense.month);
+                    if ($scope.billsExpense.ok)
+                        $scope.contaPaga = true;
 
                     if ($scope.billsExpense._conciliation != null) {
                         $http.get(consts.apiUrl + '/conciliation/' + $scope.billsExpense._conciliation)
@@ -131,7 +134,7 @@
                                 .then(function (response) {
                                     $uibModalInstance.dismiss();
                                 }).catch(function (error) {
-                                    msgs.addError("Erro ao criar o lançamento bancário");
+                                    msgs.addError("Erro ao criar o movimentação bancária");
                                 });
                         }
                         $uibModalInstance.dismiss();
@@ -156,7 +159,7 @@
                                 .then(function (response) {
                                     $uibModalInstance.dismiss();
                                 }).catch(function (error) {
-                                    msgs.addError("Erro ao criar o lançamento bancário");
+                                    msgs.addError("Erro ao criar a movimentação bancária");
                                 });
                         }
                         $uibModalInstance.dismiss();
@@ -198,7 +201,7 @@
                 controller: 'UploadModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'md',
                 resolve: {
@@ -217,7 +220,7 @@
             window.open(consts.apiUrl + "/file-bill/" + id + '?token=' + auth.getUser().token);
         }
 
-        // #### REDIRECIONA O USUÁRIO PARA A PAGINA DE EDITAR LANÇAMENTOS  ####
+        // #### REDIRECIONA O USUÁRIO PARA A PAGINA DE EDITAR AS Movimentações  ####
         $scope.open = function (id) {
             if ($scope.conciliation.transaction.credit === true) {
                 $uibModalInstance.dismiss();
@@ -228,7 +231,7 @@
                         controller: 'AccountLaunchModalController',
                         controllerAs: 'vm',
                         windowClass: '',
-                        backdrop: true,
+                        backdrop: 'static',
                         backdropClass: 'fade',
                         size: 'lg',
                         resolve: {
@@ -256,7 +259,7 @@
                         controller: 'AccountLaunchModalController',
                         controllerAs: 'vm',
                         windowClass: '',
-                        backdrop: true,
+                        backdrop: 'static',
                         backdropClass: 'fade',
                         size: 'lg',
                         resolve: {

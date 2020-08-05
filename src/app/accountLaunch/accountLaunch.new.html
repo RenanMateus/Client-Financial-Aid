@@ -1,11 +1,11 @@
 <div class="ibox-content">
     <div class="row" style="margin-left:1%; margin-right:5%">
-        <h2 ng-if="accountLaunch._id === new">Insira um Novo Lançamento
+        <h2 ng-if="accountLaunch._id === new">Insira uma Nova Movimentação
             <spam class="pull-right" style="cursor:pointer">
                 <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
             </spam>
         </h2>
-        <h2 ng-if="accountLaunch._id">Edite um Lançamento
+        <h2 ng-if="accountLaunch._id">Edite uma Movimentação
             <spam class="pull-right" style="cursor:pointer">
                 <i class="fa fa-close" ng-click="vm.close()" style="color:red"></i>
             </spam>
@@ -17,11 +17,16 @@
         <form id="form" ng-submit="register(form)">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4>
+                        <b>Tipo*</b>
+                    </h4>
                     <div class="btn-group">
                         <label class="btn btn-{{accountLaunch.credit === true ? 'success':'white'}}"
-                            ng-model="accountLaunch.credit" uib-btn-radio="true" value="true">Crédito</label>
+                            ng-disabled="accountLaunch._conciliation != null && accountLaunch._id"
+                            ng-model="accountLaunch.credit" uib-btn-radio="true" value="true">Entrada</label>
                         <label class="btn btn-{{accountLaunch.credit === false ? 'danger':'white'}}"
-                            ng-model="accountLaunch.credit" uib-btn-radio="false" value="false">Débito </label>
+                            ng-disabled="accountLaunch._conciliation != null && accountLaunch._id"
+                            ng-model="accountLaunch.credit" uib-btn-radio="false" value="false">Saída</label>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -30,7 +35,8 @@
                     </h4>
                     <div class="input-group m-b">
                         <span class="input-group-addon">R$</span>
-                        <input type="text" id="value" ng-model="accountLaunch.value" class="form-control" required />
+                        <input type="text" id="value" ng-model="accountLaunch.value" class="form-control" required
+                            ng-disabled="accountLaunch._conciliation != null && accountLaunch._id" />
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -42,7 +48,8 @@
                             <i class="fa fa-tag"></i>
                         </span>
                         <input type="text" placeholder="Descrição" ng-model="accountLaunch.description"
-                            class="form-control" />
+                            class="form-control"
+                            ng-disabled="accountLaunch._conciliation != null && accountLaunch._id" />
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -53,7 +60,8 @@
                         <span class="input-group-addon">
                             <i class="fa fa-tag"></i>
                         </span>
-                        <input type="date" ng-model="accountLaunch.date" class="form-control" />
+                        <input type="date" ng-model="accountLaunch.date" class="form-control"
+                            ng-disabled="accountLaunch._conciliation != null && accountLaunch._id" />
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -68,7 +76,7 @@
                         <input type="" placeholder="Categoria" autocomplete="off"
                             uib-typeahead="p as p.name  for p in categories | filter:$viewValue | limitTo:15"
                             ng-model="accountLaunch._category" typeahead-no-results='noResults' class="form-control"
-                            ng-disabled="categories.length === 0">
+                            ng-disabled="categories.length === 0 || (accountLaunch._conciliation != null && accountLaunch._id)">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -80,7 +88,8 @@
                             <i class="fa fa-tag"></i>
                         </span>
                         <input type="text" placeholder="Nº Documento" ng-model="accountLaunch.docNumber"
-                            class="form-control" />
+                            class="form-control"
+                            ng-disabled="accountLaunch._conciliation != null && accountLaunch._id" />
                     </div>
                 </div>
                 <div ng-if="accountLaunch.credit ===false" class="col-lg-6">
@@ -95,7 +104,7 @@
                         <input type="" placeholder="Fornecedor" autocomplete="off"
                             uib-typeahead="p as p.name  for p in providerPartners | filter:$viewValue | limitTo:15"
                             ng-model="accountLaunch._partner" typeahead-no-results='noResults' class="form-control"
-                            ng-disabled="providerPartners.length === 0">
+                            ng-disabled="providerPartners.length === 0 || (accountLaunch._conciliation != null && accountLaunch._id)">
                     </div>
                 </div>
                 <div ng-if="accountLaunch.credit ===false" class="col-lg-6">
@@ -110,7 +119,7 @@
                         <input type="" placeholder="Centro de Custo" autocomplete="off"
                             uib-typeahead="p as p.name  for p in centerCost | filter:$viewValue | limitTo:15"
                             ng-model="accountLaunch._center" typeahead-no-results='noResults' class="form-control"
-                            ng-disabled="centerCost.length === 0">
+                            ng-disabled="centerCost.length === 0 || (accountLaunch._conciliation != null && accountLaunch._id)">
                     </div>
                 </div>
                 <div ng-if="accountLaunch.credit ===true" class="col-lg-6">
@@ -125,7 +134,7 @@
                         <input type="" placeholder="Cliente" autocomplete="off"
                             uib-typeahead="p as p.name  for p in clientPartners | filter:$viewValue | limitTo:15"
                             ng-model="accountLaunch._partner" typeahead-no-results='noResults' class="form-control"
-                            ng-disabled="clientPartners.length === 0">
+                            ng-disabled="clientPartners.length === 0 || (accountLaunch._conciliation != null && accountLaunch._id)">
                     </div>
                 </div>
                 <div ng-if="accountLaunch.credit ===true" class="col-lg-6">
@@ -140,7 +149,7 @@
                         <input type="" placeholder="Centro de Receita" autocomplete="off"
                             uib-typeahead="p as p.name  for p in centerRevenue | filter:$viewValue | limitTo:15"
                             ng-model="accountLaunch._center" typeahead-no-results='noResults' class="form-control"
-                            ng-disabled="centerRevenue.length === 0">
+                            ng-disabled="centerRevenue.length === 0 || (accountLaunch._conciliation != null && accountLaunch._id)">
                     </div>
                 </div>
                 <div class="col-lg-12" ng-if="vm.anexos">
@@ -180,10 +189,10 @@
                                     <td ng-if="!conciliation.bill.description">
                                         <strong>Descrição: </strong>-----</td>
                                     <td ng-if="conciliation.bill.credit">
-                                        <strong>Tipo: </strong>Crédito</td>
+                                        <strong>Tipo: </strong>Entrada</td>
                                     <td>
                                     <td ng-if="!conciliation.bill.credit">
-                                        <strong>Tipo: </strong>Débito</td>
+                                        <strong>Tipo: </strong>Saída</td>
                                     <td>
                                         <strong>Valor: </strong>{{'R$' + conciliation.bill.value}}</td>
                                     <td>

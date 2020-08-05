@@ -23,8 +23,8 @@
             </div>
         </div>
         <div>
-            <h5 style="color:red">Para conciliar as contas com os lançamentos, selecione a conta desejada, e o
-                lanaçamento correspondente aquela conta, depois clique no botão conciliar.</h5>
+            <h5 style="color:red">Para conciliar as contas com as movimentações, selecione a conta desejada, e a
+                movimentação correspondente aquela conta, depois clique no botão conciliar.</h5>
         </div>
         <div class="wrapper wrapper-content" style="background-color: rgba(246, 249, 252, 0.836)">
             <div class="ibox-content row animated fadeInDown" style="background-color: rgba(246, 249, 252, 0.836)">
@@ -324,14 +324,14 @@
                                 <input id="switch-shadow2" class="switch switch--shadow" ng-model="vm.credit"
                                     type="checkbox">
                                 <label for="switch-shadow2" style="margin-bottom:10px">
-                                    <span style="margin-left:50px">Crédito</span>
+                                    <span style="margin-left:50px">Entrada</span>
                                 </label>
                             </div>
                             <div class="col-lg-3">
                                 <input id="switch-shadow3" class="switch switch--shadow" ng-model="vm.debit"
                                     type="checkbox">
                                 <label for="switch-shadow3">
-                                    <span style="margin-left:50px">Débito</span>
+                                    <span style="margin-left:50px">Saída</span>
                                 </label>
                             </div>
                         </div>
@@ -347,9 +347,9 @@
                                 <span class="col-lg-4" ng-if="!c.description">
                                     <b>Descrição:</b> ----</span>
                                 <span class="col-lg-4" ng-if="c.credit" style="padding-left:2ch">
-                                    <b>Tipo:</b> Crédito</span>
+                                    <b>Tipo:</b> Entrada</span>
                                 <span class="col-lg-4" ng-if="!c.credit" style="padding-left:2ch">
-                                    <b>Tipo:</b> Débito</span>
+                                    <b>Tipo:</b> Saída</span>
                                 <span class="col-lg-4" style="padding-left:2ch">
                                     <b>Valor:</b> {{c.value | currency:'R$'}}</span>
                                 <span class="col-lg-4">
@@ -370,9 +370,9 @@
                                 <span class="col-lg-4" ng-if="!c.description">
                                     <b>Descrição:</b> ----</span>
                                 <span class="col-lg-4" ng-if="c.credit" style="padding-left:2ch">
-                                    <b>Tipo:</b> Crédito</span>
+                                    <b>Tipo:</b> Entrada</span>
                                 <span class="col-lg-4" ng-if="!c.credit" style="padding-left:2ch">
-                                    <b>Tipo:</b> Débito</span>
+                                    <b>Tipo:</b> Saída</span>
                                 <span class="col-lg-4" style="padding-left:2ch">
                                     <b>Valor:</b> {{c.value | currency:'R$'}}</span>
                                 <span class="col-lg-4">

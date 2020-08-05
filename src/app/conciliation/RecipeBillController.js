@@ -58,6 +58,7 @@
                     msgs.addSuccess("Conta Recebida com sucesso!");
 
                     vm.accountLaunch.value = $scope.billsRecipe.value;
+                    vm.accountLaunch.credit = $scope.billsRecipe.credit;
                     vm.accountLaunch.description = $scope.billsRecipe.description;
                     vm.accountLaunch.date = $scope.billsRecipe.dueDate;
                     vm.accountLaunch.docNumber = $scope.billsRecipe.docNumber;
@@ -69,7 +70,7 @@
                         .then(function (response) {
                             $uibModalInstance.dismiss();
                         }).catch(function (error) {
-                            msgs.addError("Erro ao criar o lançamento bancário");
+                            msgs.addError("Erro ao criar a movimentação bancária");
                         });
                     $uibModalInstance.dismiss();
                 }).catch(function (error) {

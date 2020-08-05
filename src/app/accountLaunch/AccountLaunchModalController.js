@@ -114,7 +114,7 @@
         };
 
 
-        // #### REDIRECIONA O USUÁRIO PARA A PAGINA DE EDITAR LANÇAMENTOS  ####
+        // #### REDIRECIONA O USUÁRIO PARA A PAGINA DE EDITAR as Movimentações  ####
         $scope.open = function (id) {
             if ($scope.conciliation.bill.credit === true) {
                 $uibModalInstance.dismiss();
@@ -125,7 +125,7 @@
                         controller: 'BillsRecipeModalController',
                         controllerAs: 'vm',
                         windowClass: '',
-                        backdrop: true,
+                        backdrop: 'static',
                         backdropClass: 'fade',
                         size: 'lg',
                         resolve: {
@@ -153,7 +153,7 @@
                         controller: 'BillsExpenseModalController',
                         controllerAs: 'vm',
                         windowClass: '',
-                        backdrop: true,
+                        backdrop: 'static',
                         backdropClass: 'fade',
                         size: 'lg',
                         resolve: {
@@ -205,7 +205,7 @@
                 controller: 'UploadTransactionModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'md',
                 resolve: {

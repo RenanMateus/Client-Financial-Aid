@@ -14,7 +14,7 @@
         vm.id = id;
         $scope.accounts = {};
         vm.accountLaunch = {
-            credit: true,
+            credit: false,
             value: 0,
             description: '',
             date: new Date(),
@@ -58,6 +58,7 @@
                     msgs.addSuccess("Conta Paga com sucesso!");
 
                     vm.accountLaunch.value = $scope.billsExpense.value;
+                    vm.accountLaunch.credit = $scope.billsExpense.credit;
                     vm.accountLaunch.description = $scope.billsExpense.description;
                     vm.accountLaunch.date = $scope.billsExpense.dueDate;
                     vm.accountLaunch.docNumber = $scope.billsExpense.docNumber;
@@ -69,7 +70,7 @@
                         .then(function (response) {
                             $uibModalInstance.dismiss();
                         }).catch(function (error) {
-                            msgs.addError("Erro ao criar o lançamento bancário");
+                            msgs.addError("Erro ao criar a movimentação bancária");
                         });
                     $uibModalInstance.dismiss();
                 }).catch(function (error) {

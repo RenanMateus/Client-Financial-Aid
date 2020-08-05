@@ -68,7 +68,7 @@
                     vm.totalItems = response.data.total;
                     vm.itemsPerPage = 10;
                     if (vm.totalItems == 0) {
-                        vm.notifyErro = "Não há Lançamentos entre essas datas";
+                        vm.notifyErro = "Não há Movimentações entre essas datas";
                         $scope.visibleTable = true;
                     };
                     $scope.accountLaunch.map(element => {
@@ -104,7 +104,7 @@
                     vm.totalItems = response.data.total;
                     vm.itemsPerPage = 10;
                     if (vm.totalItems == 0) {
-                        vm.notifyErro = "Não há Lançamentos entre essas datas";
+                        vm.notifyErro = "Não há Movimentações entre essas datas";
                         $scope.visibleTable = true;
                     };
                     $scope.accountLaunch.map(element => {
@@ -141,7 +141,7 @@
                     vm.totalItems = response.data.total;
                     vm.itemsPerPage = 10;
                     if (vm.totalItems == 0) {
-                        vm.notifyErro = "Não há Lançamentos entre essas datas";
+                        vm.notifyErro = "Não há Movimentações entre essas datas";
                         $scope.visibleTable = true;
                     };
                     $scope.accountLaunch.map(element => {
@@ -178,7 +178,7 @@
                         vm.totalItems = response.data.total;
                         vm.itemsPerPage = 10;
                         if (vm.totalItems == 0) {
-                            vm.notifyErro = "Não há Lançamentos entre essas datas";
+                            vm.notifyErro = "Não há Movimentações entre essas datas";
                             $scope.visibleTable = true;
                         };
                         $scope.accountLaunch.map(element => {
@@ -240,7 +240,7 @@
                     vm.totalItems = response.data.total;
                     vm.itemsPerPage = 10;
                     if (vm.totalItems == 0) {
-                        vm.notifyErro = "Não há Lançamentos com essa descrição";
+                        vm.notifyErro = "Não há Movimentações com essa descrição";
                         $scope.visibleTable = true;
                     };
                     $scope.accountLaunch.map(element => {
@@ -269,7 +269,7 @@
                 controller: 'AccountLaunchModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {
@@ -292,7 +292,7 @@
                 controller: 'UploadLaunchController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'md',
                 resolve: {

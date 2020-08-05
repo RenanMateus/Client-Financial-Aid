@@ -70,7 +70,7 @@
                 controller: 'AccountModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {
@@ -93,7 +93,7 @@
                 controller: 'AccountModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {

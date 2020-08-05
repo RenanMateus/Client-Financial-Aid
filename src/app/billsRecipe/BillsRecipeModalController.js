@@ -34,6 +34,7 @@
             _center: undefined
         }
         vm.idAccount = null;
+        $scope.contaRecebida = false;
 
         $http.get(consts.apiUrl + '/accounts/')
             .then(function (response) {
@@ -80,6 +81,8 @@
                         $scope.billsRecipe.docDate = new Date($scope.billsRecipe.docDate);
                     if ($scope.billsRecipe.month)
                         $scope.billsRecipe.month = new Date($scope.billsRecipe.month);
+                    if ($scope.billsRecipe.ok)
+                        $scope.contaRecebida = true;
 
                     if ($scope.billsRecipe._conciliation != null) {
                         $http.get(consts.apiUrl + '/conciliation/' + $scope.billsRecipe._conciliation)
@@ -126,7 +129,7 @@
                                 .then(function (response) {
                                     $uibModalInstance.dismiss();
                                 }).catch(function (error) {
-                                    msgs.addError("Erro ao criar o lançamento bancário");
+                                    msgs.addError("Erro ao criar a movimentação bancária");
                                 });
                         }
                         $uibModalInstance.dismiss();
@@ -154,7 +157,7 @@
                                 .then(function (response) {
                                     $uibModalInstance.dismiss();
                                 }).catch(function (error) {
-                                    msgs.addError("Erro ao criar o lançamento bancário");
+                                    msgs.addError("Erro ao criar a movimentação bancária");
                                 });
                         }
                         $uibModalInstance.dismiss();
@@ -196,7 +199,7 @@
                 controller: 'UploadModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'md',
                 resolve: {
@@ -216,7 +219,7 @@
         }
 
 
-        // #### REDIRECIONA O USUÁRIO PARA A PAGINA DE EDITAR LANÇAMENTOS  ####
+        // #### REDIRECIONA O USUÁRIO PARA A PAGINA DE EDITAR as Movimentações  ####
         $scope.open = function (id) {
             if ($scope.conciliationRecipe.transaction.credit === true) {
                 $uibModalInstance.dismiss();
@@ -227,7 +230,7 @@
                         controller: 'AccountLaunchModalController',
                         controllerAs: 'vm',
                         windowClass: '',
-                        backdrop: true,
+                        backdrop: 'static',
                         backdropClass: 'fade',
                         size: 'lg',
                         resolve: {
@@ -255,7 +258,7 @@
                         controller: 'AccountLaunchModalController',
                         controllerAs: 'vm',
                         windowClass: '',
-                        backdrop: true,
+                        backdrop: 'static',
                         backdropClass: 'fade',
                         size: 'lg',
                         resolve: {

@@ -93,7 +93,7 @@
                 controller: 'CentersModalController',
                 controllerAs: 'vm',
                 windowClass: '',
-                backdrop: true,
+                backdrop: 'static',
                 backdropClass: 'fade',
                 size: 'lg',
                 resolve: {

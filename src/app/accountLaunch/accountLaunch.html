@@ -6,7 +6,7 @@
             <div class="col-lg-12" style="background-color: rgba(246, 249, 252, 0.836)">
                 <div class="row" style="background-color: rgba(246, 249, 252, 0.836)">
                     <div class="col-md-6">
-                        <h2>Lançamentos</h2>
+                        <h2>Movimentações Bancárias</h2>
                         <div style="margin-top:35px">
                             <span>
                                 <b>Crédito parcial: {{vm.credit | currency:'R$'}}</b>
@@ -22,10 +22,10 @@
                         </div>
                     </div>
                     <br>
-                    <input type="button" value="Novo Lançamento" class="btn btn-success pull-right"
+                    <input type="button" value="Nova Movimentação" class="btn btn-success pull-right"
                         ng-click="openModal('new', {id:idAccount})">
                     <button class="btn btn-success pull-right" ng-click="vm.importLaunch(idAccount)"
-                        style="margin-right:5px">Importar Lançamentos
+                        style="margin-right:5px">Importar Movimentação
                         <span style="font-size:7pt">(Excel)</span>
                     </button>
                     <div class="col-md-6" style="margin-top:10px; margin-left:-15px">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="input-group col-md-6 pull-right" style="margin-top:15px">
-                        <input type="text" placeholder="Procurar Lançamento" ng-model="vm.searchText"
+                        <input type="text" placeholder="Procurar Movimentação" ng-model="vm.searchText"
                             ng-keydown="$event.keyCode === 13 && vm.search(vm.searchText)" class="input-sm form-control"
                             style="background-color:rgba(246, 249, 252, 0.836)">
                         <span class="input-group-btn">
@@ -73,7 +73,7 @@
                         <a ui-sref="dashboard.account">Contas</a>
                     </li>
                     <li class="active">
-                        <strong>Lançamentos</strong>
+                        <strong>Movimentações</strong>
                     </li>
                 </ol>
             </div>
@@ -108,19 +108,19 @@
                             <td ng-if="!c._partner">----</td>
                             <td>{{c.value | currency:'R$'}}</td>
                             <td ng-if="c.credit">
-                                <i title="Lançamento de Crédito" class="fa fa-plus"
+                                <i title="Movimentação de Entrada" class="fa fa-plus"
                                     style="color:blue; margin-left:20%"></i>
                             </td>
                             <td ng-if="!c.credit">
-                                <i title="Lançamento de Débito" class="fa fa-minus"
+                                <i title="Movimentação de Saída" class="fa fa-minus"
                                     style="color:red; margin-left:20%"></i>
                             </td>
                             <td ng-if="c._conciliation == null">
-                                <i title="Lançamento Não Conciliado" class="fa fa-lg fa-warning"
+                                <i title="Movimentação Não Conciliada" class="fa fa-lg fa-warning"
                                     style="color:red; margin-left:20%">
                             </td>
                             <td ng-if="c._conciliation != null">
-                                <i title="Lançamento Conciliado" class="fa fa-lg fa-check"
+                                <i title="Movimentação Conciliada" class="fa fa-lg fa-check"
                                     style="color:rgb(9, 199, 9); margin-left:20%">
                             </td>
                             <td style="margin-right:90%">
@@ -129,8 +129,7 @@
                                     <i class="fa fa-lg fa-trash"></i>
                                 </button>
                                 <button title="Editar Transação" ng-click="openModal(c._id)"
-                                    class="pull-right btn btn-sm btn-warning" style="width:35px"
-                                    ng-disabled="c._conciliation != null">
+                                    class="pull-right btn btn-sm btn-warning" style="width:35px">
                                     <i class="fa fa-lg fa-edit"></i>
                                 </button>
                             </td>
