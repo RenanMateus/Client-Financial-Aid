@@ -4,7 +4,8 @@ Este README descreve os passos necessários para execução do front-end do FINA
 
 ### Passos para instalação e rodar para teste ###
 
-* Instale o Gulp [npm install gulp]
+* Instale o Gulp globalmente [npm install gulp -g]
+* Instale o bower globalmente [npm install bower -g]
 * instale as depêndencias com o comando "npm install"
 * instale as depêndencias do bower com o comando "bower install"
 * execute com o comando "gulp start"
